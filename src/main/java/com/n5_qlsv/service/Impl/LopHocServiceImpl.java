@@ -16,6 +16,7 @@ public class LopHocServiceImpl implements LopHocService {
 
     @Override
     public LopHoc saveLopHoc(LopHoc lopHoc) {
+        lopHoc.setMaLop(0);
         return lopHocRepository.save(lopHoc);
     }
 

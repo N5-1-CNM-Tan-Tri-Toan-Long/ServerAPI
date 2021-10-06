@@ -16,6 +16,7 @@ public class SinhVienServiceImpl implements SinhVienService {
 
     @Override
     public SinhVien saveSinhVien(SinhVien sinhVien) {
+        sinhVien.setMaSV(0);
         return sinhVienRepository.save(sinhVien);
     }
 
