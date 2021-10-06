@@ -1,0 +1,30 @@
+package com.n5_qlsv.controller;
+
+import com.n5_qlsv.entity.LopHoc;
+import com.n5_qlsv.service.LopHocService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/lophoc")
+public class LopHocController {
+
+    @Autowired
+    private LopHocService lopHocService;
+
+    @GetMapping("")
+    public List<LopHoc> findAllLopHoc(){
+        return lopHocService.findAllLopHoc();
+    }
+
+    @PostMapping("")
+    public LopHoc saveLopHoc(@RequestBody LopHoc lopHoc){
+        return lopHocService.saveLopHoc(lopHoc);
+    }
+
+
+
+
+}
