@@ -29,14 +29,14 @@ public class PhieuDangKyLHP {
 
     @ManyToOne
     @JoinColumn(name = "ma_sv")
-    private com.n5.testdb.entity.SinhVien sinhVien;
+    private SinhVien sinhVien;
 
     @ManyToOne
     @JoinColumn(name = "ma_ctlhp")
-    private com.n5.testdb.entity.ChiTietLopHocPhan chiTietLopHocPhan;
+    private ChiTietLopHocPhan chiTietLopHocPhan;
 
     @OneToMany(mappedBy = "pdklhp")
-    private List<com.n5.testdb.entity.KetQuaHocTap> ketQuaHocTapList;
+    private List<KetQuaHocTap> ketQuaHocTapList;
 
     public PhieuDangKyLHP(long maPDKLHP) {
         this.maPDKLHP = maPDKLHP;
