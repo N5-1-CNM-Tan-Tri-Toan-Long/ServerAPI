@@ -15,7 +15,7 @@ public class SinhVienController {
     @Autowired
     private SinhVienService sinhVienService;
 
-    @GetMapping("")
+    @GetMapping
     public List<SinhVien> getAllSinhVien(){
         return sinhVienService.findAllSinhVien();
     }
@@ -25,7 +25,7 @@ public class SinhVienController {
         return sinhVienService.findSinhVienById(id);
     }
 
-    @PostMapping("")
+    @PostMapping
     public SinhVien saveSinhVien(@RequestBody SinhVien sinhVien){
         return sinhVienService.saveSinhVien(sinhVien);
     }

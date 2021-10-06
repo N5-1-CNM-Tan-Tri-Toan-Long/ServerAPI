@@ -1,5 +1,6 @@
 package com.n5_qlsv.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,11 +32,14 @@ public class Khoa {
     private String moTa;
 
     @OneToMany(mappedBy = "khoa")
+    @JsonIgnore
     private List<SinhVien> sinhVienList;
 
     @OneToMany(mappedBy = "khoa", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<ChuyenNganh> chuyenNganhList;
 
     @OneToMany(mappedBy = "khoa")
+    @JsonIgnore
     private List<MonHoc> monHocList;
 }

@@ -1,5 +1,6 @@
 package com.n5_qlsv.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -36,9 +37,11 @@ public class HocKy {
     private int thuTuHocKy;
 
     @OneToMany(mappedBy = "hocKy")
+    @JsonIgnore
     private List<SinhVien> sinhVienList;
 
     @OneToMany(mappedBy = "hocKy")
+    @JsonIgnore
     private List<LopHocPhan> lopHocPhanList;
 
     public HocKy(long maHK) {

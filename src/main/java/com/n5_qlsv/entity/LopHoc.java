@@ -1,5 +1,6 @@
 package com.n5_qlsv.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.Type;
 
@@ -23,6 +24,7 @@ public class LopHoc {
     private String tenLop;
 
     @OneToMany(mappedBy = "lopHoc")
+    @JsonIgnore
     private List<SinhVien> sinhVienList;
 
     public LopHoc(long maLop) {
