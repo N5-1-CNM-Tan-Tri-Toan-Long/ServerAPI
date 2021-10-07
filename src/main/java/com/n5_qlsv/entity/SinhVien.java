@@ -69,8 +69,4 @@ public class SinhVien {
             cascade = CascadeType.ALL)
     @JsonIgnore
     private User user;
-
-    public SinhVien(long maSV) {
-        this.maSV = maSV;
-    }
 }

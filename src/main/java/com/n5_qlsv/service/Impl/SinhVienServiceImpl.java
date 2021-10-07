@@ -26,8 +26,9 @@ public class SinhVienServiceImpl implements SinhVienService {
     }
 
     @Override
-    public void updateSinhVienById(Long maSinhVien, SinhVien sinhVien) {
-
+    public SinhVien updateSinhVienById(Long maSinhVien, SinhVien sinhVien) {
+        sinhVien.setMaSV(maSinhVien);
+        return sinhVienRepository.save(sinhVien);
     }
 
     @Override

@@ -49,8 +49,4 @@ public class ChiTietLopHocPhan implements Serializable {
     @ManyToOne
     @JoinColumn(name = "ma_lhp")
     private LopHocPhan lopHocPhan;
-
-    public ChiTietLopHocPhan(long maCTLHP) {
-        this.maCTLHP = maCTLHP;
-    }
 }

@@ -43,8 +43,4 @@ public class HocKy {
     @OneToMany(mappedBy = "hocKy")
     @JsonIgnore
     private List<LopHocPhan> lopHocPhanList;
-
-    public HocKy(long maHK) {
-        this.maHK = maHK;
-    }
 }

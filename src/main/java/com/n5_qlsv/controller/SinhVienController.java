@@ -30,6 +30,11 @@ public class SinhVienController {
         return sinhVienService.saveSinhVien(sinhVien);
     }
 
+    @PutMapping("/{id}")
+    public SinhVien updateSinhVien(@RequestBody SinhVien sinhVien, @PathVariable ("id") Long id){
+        return sinhVienService.updateSinhVienById(id, sinhVien);
+    }
+
     @DeleteMapping("/{id}")
     public void deleteSinhVienById(@PathVariable("id") Long id){
         sinhVienService.deleteSinhVienById(id);

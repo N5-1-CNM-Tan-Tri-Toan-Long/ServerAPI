@@ -7,7 +7,7 @@ import java.util.List;
 public interface SinhVienService {
     SinhVien saveSinhVien(SinhVien sinhVien);
     SinhVien findSinhVienById(Long maSinhVien);
-    void updateSinhVienById(Long maSinhVien, SinhVien sinhVien);
+    SinhVien updateSinhVienById(Long maSinhVien, SinhVien sinhVien);
     void deleteSinhVienById(Long maSinhVien);
     List<SinhVien> findAllSinhVien();
 }

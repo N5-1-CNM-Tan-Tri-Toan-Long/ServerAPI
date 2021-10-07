@@ -9,5 +9,5 @@ public interface LopHocService {
     LopHoc findLopHocById(Long maLopHoc);
     List<LopHoc> findAllLopHoc();
     void deleteLopHocById(Long maLopHoc);
-    void updateLopHocById(Long maLopHoc, LopHoc lopHoc);
+    LopHoc updateLopHocById(Long maLopHoc, LopHoc lopHoc);
 }

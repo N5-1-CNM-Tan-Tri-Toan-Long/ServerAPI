@@ -56,8 +56,4 @@ public class LopHocPhan {
 
     @OneToMany(mappedBy = "lopHocPhan", cascade = CascadeType.ALL)
     private List<ChiTietLopHocPhan> chiTietLopHocPhanList;
-
-    public LopHocPhan(long maLHP) {
-        this.maLHP = maLHP;
-    }
 }

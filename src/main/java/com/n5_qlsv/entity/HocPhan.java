@@ -38,8 +38,4 @@ public class HocPhan {
     @OneToMany(mappedBy = "hocPhan")
     @JsonIgnore
     private List<LopHocPhan> lopHocPhanList;
-
-    public HocPhan(long maHocPhan) {
-        this.maHocPhan = maHocPhan;
-    }
 }

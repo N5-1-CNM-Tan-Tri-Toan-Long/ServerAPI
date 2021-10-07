@@ -39,8 +39,4 @@ public class PhieuDangKyLHP {
     @OneToMany(mappedBy = "pdklhp")
     @JsonIgnore
     private List<KetQuaHocTap> ketQuaHocTapList;
-
-    public PhieuDangKyLHP(long maPDKLHP) {
-        this.maPDKLHP = maPDKLHP;
-    }
 }

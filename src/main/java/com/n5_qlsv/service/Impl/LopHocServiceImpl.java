@@ -36,7 +36,8 @@ public class LopHocServiceImpl implements LopHocService {
     }
 
     @Override
-    public void updateLopHocById(Long maLopHoc, LopHoc lopHoc) {
-
+    public LopHoc updateLopHocById(Long maLopHoc, LopHoc lopHoc) {
+        lopHoc.setMaLop(maLopHoc);
+        return lopHocRepository.save(lopHoc);
     }
 }

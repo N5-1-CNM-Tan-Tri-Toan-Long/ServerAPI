@@ -26,8 +26,4 @@ public class LopHoc {
     @OneToMany(mappedBy = "lopHoc")
     @JsonIgnore
     private List<SinhVien> sinhVienList;
-
-    public LopHoc(long maLop) {
-        this.maLop = maLop;
-    }
 }
