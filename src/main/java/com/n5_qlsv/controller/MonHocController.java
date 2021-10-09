@@ -15,8 +15,9 @@ public class MonHocController {
     private MonHocService monHocService;
 
     @GetMapping
-    public List<MonHoc> findAllMonHoc(){
-        return monHocService.findAllMonHoc();
+    public List<MonHoc> findAllMonHoc(@RequestParam (defaultValue = "0") int page
+            , @RequestParam (defaultValue = "0") int size){
+        return monHocService.findAllMonHoc(page, size);
     }
 
     @GetMapping("/{id}")

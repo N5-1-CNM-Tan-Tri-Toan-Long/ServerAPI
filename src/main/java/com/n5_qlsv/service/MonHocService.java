@@ -7,7 +7,7 @@ import java.util.List;
 public interface MonHocService {
     MonHoc saveMonHoc(MonHoc monHoc);
     MonHoc findMonHocById(Long maMonHoc);
-    List<MonHoc> findAllMonHoc();
+    List<MonHoc> findAllMonHoc(int page, int size);
     void deleteMonHocById(Long maMonHoc);
     MonHoc updateMonHocById(Long maMonHoc, MonHoc monHoc);
 }

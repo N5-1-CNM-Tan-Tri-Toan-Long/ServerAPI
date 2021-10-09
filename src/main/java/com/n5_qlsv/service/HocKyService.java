@@ -7,7 +7,7 @@ import java.util.List;
 public interface HocKyService {
     HocKy saveHocKy(HocKy hocKy);
     HocKy findHocKyById(Long maHK);
-    List<HocKy> findAllHocKy();
+    List<HocKy> findAllHocKy(int page, int size);
     void deleteHocKyById(Long maHK);
     HocKy updateHocKyById(Long maHK, HocKy hocKy);
 }

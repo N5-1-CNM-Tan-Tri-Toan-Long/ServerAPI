@@ -4,6 +4,8 @@ import com.n5_qlsv.entity.HocKy;
 import com.n5_qlsv.repository.HocKyRepository;
 import com.n5_qlsv.service.HocKyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,8 +28,13 @@ public class HocKyServiceImpl implements HocKyService {
     }
 
     @Override
-    public List<HocKy> findAllHocKy() {
-        return hocKyRepository.findAll();
+    public List<HocKy> findAllHocKy(int page, int size) {
+        Pageable pageable;
+        if(page < 0 || size <= 0)
+            pageable = Pageable.unpaged();
+        else
+            pageable = PageRequest.of(page, size);
+        return hocKyRepository.findAll(pageable).getContent();
     }
 
     @Override

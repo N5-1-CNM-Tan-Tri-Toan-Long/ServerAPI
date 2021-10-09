@@ -4,6 +4,8 @@ import com.n5_qlsv.entity.ChuyenNganh;
 import com.n5_qlsv.repository.ChuyenNganhRepository;
 import com.n5_qlsv.service.ChuyenNganhService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,8 +28,13 @@ public class ChuyenNganhServiceImpl implements ChuyenNganhService {
     }
 
     @Override
-    public List<ChuyenNganh> findAllChuyenNganh() {
-        return chuyenNganhRepository.findAll();
+    public List<ChuyenNganh> findAllChuyenNganh(int page, int size) {
+        Pageable pageable;
+        if(page < 0 || size <= 0)
+            pageable = Pageable.unpaged();
+        else
+            pageable = PageRequest.of(page, size);
+        return chuyenNganhRepository.findAll(pageable).getContent();
     }
 
     @Override

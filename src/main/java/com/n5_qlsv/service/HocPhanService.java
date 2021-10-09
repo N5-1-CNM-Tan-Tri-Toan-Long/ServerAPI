@@ -2,7 +2,6 @@ package com.n5_qlsv.service;
 
 import com.n5_qlsv.entity.HocPhan;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 public interface HocPhanService {

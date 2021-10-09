@@ -16,8 +16,9 @@ public class SinhVienController {
     private SinhVienService sinhVienService;
 
     @GetMapping
-    public List<SinhVien> getAllSinhVien(){
-        return sinhVienService.findAllSinhVien();
+    public List<SinhVien> getAllSinhVien(@RequestParam (defaultValue = "0") int page
+            , @RequestParam (defaultValue = "0") int size){
+        return sinhVienService.findAllSinhVien(page, size);
     }
 
     @GetMapping("/{id}")

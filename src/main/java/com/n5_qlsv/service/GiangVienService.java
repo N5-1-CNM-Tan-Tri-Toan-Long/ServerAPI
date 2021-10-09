@@ -7,7 +7,7 @@ import java.util.List;
 public interface GiangVienService {
     GiangVien saveGiangVien(GiangVien giangVien);
     GiangVien findGiangVienById(Long maGV);
-    List<GiangVien> findAllGiangVien();
+    List<GiangVien> findAllGiangVien(int page, int size);
     void deleteGiangVienById(Long maGV);
     GiangVien updateGiangVienById(Long maGV, GiangVien giangVien);
 }

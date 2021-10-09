@@ -15,27 +15,28 @@ public class GiangVienController {
     private GiangVienService giangVienService;
 
     @GetMapping
-    public List<GiangVien> findAllGiangVien(){
-        return giangVienService.findAllGiangVien();
+    public List<GiangVien> findAllGiangVien(@RequestParam(defaultValue = "0") int page
+            , @RequestParam(defaultValue = "0") int size) {
+        return giangVienService.findAllGiangVien(page, size);
     }
 
     @GetMapping("/{id}")
-    public GiangVien getGiangVienById(@PathVariable("id") Long id){
+    public GiangVien getGiangVienById(@PathVariable("id") Long id) {
         return giangVienService.findGiangVienById(id);
     }
 
     @PostMapping
-    public GiangVien saveGiangVien(@RequestBody GiangVien giangVien){
+    public GiangVien saveGiangVien(@RequestBody GiangVien giangVien) {
         return giangVienService.saveGiangVien(giangVien);
     }
 
     @PutMapping("/{id}")
-    public GiangVien updateGiangVien(@RequestBody GiangVien giangVien, @PathVariable ("id") Long id){
+    public GiangVien updateGiangVien(@RequestBody GiangVien giangVien, @PathVariable("id") Long id) {
         return giangVienService.updateGiangVienById(id, giangVien);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteGiangVienById(@PathVariable("id") Long id){
+    public void deleteGiangVienById(@PathVariable("id") Long id) {
         giangVienService.deleteGiangVienById(id);
     }
 }

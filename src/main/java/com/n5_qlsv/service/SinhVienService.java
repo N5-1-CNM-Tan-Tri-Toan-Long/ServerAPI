@@ -9,5 +9,5 @@ public interface SinhVienService {
     SinhVien findSinhVienById(Long maSinhVien);
     SinhVien updateSinhVienById(Long maSinhVien, SinhVien sinhVien);
     void deleteSinhVienById(Long maSinhVien);
-    List<SinhVien> findAllSinhVien();
+    List<SinhVien> findAllSinhVien(int page, int size);
 }
