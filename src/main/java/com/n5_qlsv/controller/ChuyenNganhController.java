@@ -15,27 +15,28 @@ public class ChuyenNganhController {
     private ChuyenNganhService chuyenNganhService;
 
     @GetMapping
-    public List<ChuyenNganh> findAllChuyenNganh(){
-        return chuyenNganhService.findAllChuyenNganh();
+    public List<ChuyenNganh> findAllChuyenNganh(@RequestParam(defaultValue = "0") int page
+            , @RequestParam(defaultValue = "0") int size) {
+        return chuyenNganhService.findAllChuyenNganh(page, size);
     }
 
     @GetMapping("/{id}")
-    public ChuyenNganh getChuyenNganhById(@PathVariable("id") Long id){
+    public ChuyenNganh getChuyenNganhById(@PathVariable("id") Long id) {
         return chuyenNganhService.findChuyenNganhById(id);
     }
 
     @PostMapping
-    public ChuyenNganh saveChuyenNganh(@RequestBody ChuyenNganh chuyenNganh){
+    public ChuyenNganh saveChuyenNganh(@RequestBody ChuyenNganh chuyenNganh) {
         return chuyenNganhService.saveChuyenNganh(chuyenNganh);
     }
 
     @PutMapping("/{id}")
-    public ChuyenNganh updateChuyenNganh(@RequestBody ChuyenNganh chuyenNganh, @PathVariable ("id") Long id){
+    public ChuyenNganh updateChuyenNganh(@RequestBody ChuyenNganh chuyenNganh, @PathVariable("id") Long id) {
         return chuyenNganhService.updateChuyenNganhById(id, chuyenNganh);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteHocKyById(@PathVariable("id") Long id){
+    public void deleteHocKyById(@PathVariable("id") Long id) {
         chuyenNganhService.deleteChuyenNganhById(id);
     }
 

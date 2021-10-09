@@ -15,27 +15,28 @@ public class HocKyController {
     private HocKyService hocKyService;
 
     @GetMapping
-    public List<HocKy> findAllHocKy(){
-        return hocKyService.findAllHocKy();
+    public List<HocKy> findAllHocKy(@RequestParam(defaultValue = "0") int page
+            , @RequestParam(defaultValue = "0") int size) {
+        return hocKyService.findAllHocKy(page, size);
     }
 
     @GetMapping("/{id}")
-    public HocKy getHocKyById(@PathVariable("id") Long id){
+    public HocKy getHocKyById(@PathVariable("id") Long id) {
         return hocKyService.findHocKyById(id);
     }
 
     @PostMapping
-    public HocKy saveHocKy(@RequestBody HocKy hocKy){
+    public HocKy saveHocKy(@RequestBody HocKy hocKy) {
         return hocKyService.saveHocKy(hocKy);
     }
 
     @PutMapping("/{id}")
-    public HocKy updateHocKy(@RequestBody HocKy hocKy, @PathVariable ("id") Long id){
+    public HocKy updateHocKy(@RequestBody HocKy hocKy, @PathVariable("id") Long id) {
         return hocKyService.updateHocKyById(id, hocKy);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteHocKyById(@PathVariable("id") Long id){
+    public void deleteHocKyById(@PathVariable("id") Long id) {
         hocKyService.deleteHocKyById(id);
     }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 public interface LopHocService {
     LopHoc saveLopHoc(LopHoc lopHoc);
     LopHoc findLopHocById(Long maLopHoc);
-    List<LopHoc> findAllLopHoc();
+    List<LopHoc> findAllLopHoc(int page, int size);
     void deleteLopHocById(Long maLopHoc);
     LopHoc updateLopHocById(Long maLopHoc, LopHoc lopHoc);
 }

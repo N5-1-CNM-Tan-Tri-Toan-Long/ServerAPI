@@ -7,7 +7,7 @@ import java.util.List;
 public interface KhoaService {
     Khoa saveKhoa(Khoa khoa);
     Khoa findKhoaById(Long maKhoa);
-    List<Khoa> findAllKhoa();
+    List<Khoa> findAllKhoa(int page, int size);
     void deleteKhoaById(Long maKhoa);
     Khoa updateKhoaById(Long maKhoa, Khoa khoa);
 }
