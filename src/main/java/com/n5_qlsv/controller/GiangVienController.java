@@ -30,7 +30,8 @@ public class GiangVienController {
     }
 
     @PutMapping("/{id}")
-    public GiangVien updateGiangVien(@RequestBody GiangVien giangVien, @PathVariable ("id") Long id){
+    public GiangVien updateGiangVien(@RequestBody GiangVien giangVien,
+                                     @PathVariable ("id") Long id){
         return giangVienService.updateGiangVienById(id, giangVien);
     }
 
