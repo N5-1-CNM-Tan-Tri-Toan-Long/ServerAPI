@@ -15,28 +15,28 @@ public class HocPhanController {
     private HocPhanService hocPhanService;
 
     @GetMapping
-    public List<HocPhan> findAllLopHoc(@RequestParam (defaultValue = "0") int page,
+    public List<HocPhan> findAllHocPhan(@RequestParam (defaultValue = "0") int page,
                                        @RequestParam (defaultValue = "0") int size){
         return hocPhanService.findAllHocPhan(page, size);
     }
 
     @GetMapping("/{id}")
-    public HocPhan getLopHocById(@PathVariable("id") Long id){
+    public HocPhan getHocPhanById(@PathVariable("id") Long id){
         return hocPhanService.findHocPhanById(id);
     }
 
     @PostMapping
-    public HocPhan saveLopHoc(@RequestBody HocPhan lopHoc){
+    public HocPhan saveHocPhan(@RequestBody HocPhan lopHoc){
         return hocPhanService.saveHocPhan(lopHoc);
     }
 
     @PutMapping("/{id}")
-    public HocPhan updateLopHoc(@RequestBody HocPhan lopHoc, @PathVariable ("id") Long id){
+    public HocPhan updateHocPhan(@RequestBody HocPhan lopHoc, @PathVariable ("id") Long id){
         return hocPhanService.updateHocPhanById(id, lopHoc);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteLopHocById(@PathVariable("id") Long id){
+    public void deleteHocPhanById(@PathVariable("id") Long id){
         hocPhanService.deleteHocPhanById(id);
     }
 }
