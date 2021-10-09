@@ -31,11 +31,15 @@ public class HocPhan {
     @Column(name = "so_tc_th")
     private int soTCTH;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "ma_mh")
     private MonHoc monHoc;
 
-    @OneToMany(mappedBy = "hocPhan")
+    @ManyToOne
+    @JoinColumn(name = "ma_chuyen_nganh")
+    private ChuyenNganh chuyenNganh;
+
     @JsonIgnore
+    @OneToMany(mappedBy = "hocPhan", cascade = CascadeType.ALL)
     private List<LopHocPhan> lopHocPhanList;
 }

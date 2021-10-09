@@ -59,6 +59,10 @@ public class KetQuaHocTap implements Serializable {
     private double diemCK;
 
     @ManyToOne
-    @JoinColumn(name = "ma_pdklhp")
-    private PhieuDangKyLHP pdklhp;
+    @JoinColumn(name = "ma_lhp")
+    private LopHocPhan lopHocPhan;
+
+    @ManyToOne
+    @JoinColumn(name = "ma_sv")
+    private SinhVien sinhVien;
 }

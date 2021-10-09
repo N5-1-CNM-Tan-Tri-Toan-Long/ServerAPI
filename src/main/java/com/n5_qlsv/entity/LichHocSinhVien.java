@@ -12,23 +12,19 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "tbl_user")
-public class User {
+@Table(name = "tbl_lichhoc_sinhvien")
+public class LichHocSinhVien {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long userId;
+    @Column(name = "ma_lhsv")
+    private long maLHSV;
 
-    @Column(name = "role_name")
-    private String roleName;
+    @ManyToOne
+    @JoinColumn(name = "ma_lich_hoc")
+    private LichHoc lichHoc;
 
-    @Column(name = "user_name")
-    private String userName;
-
-    @Column(name = "password")
-    private String password;
-
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "ma_sv")
     private SinhVien sinhVien;
 }

@@ -35,11 +35,7 @@ public class Khoa {
     @JsonIgnore
     private List<SinhVien> sinhVienList;
 
-    @OneToMany(mappedBy = "khoa", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<ChuyenNganh> chuyenNganhList;
-
     @OneToMany(mappedBy = "khoa")
-    @JsonIgnore
-    private List<MonHoc> monHocList;
+    private List<ChuyenNganh> chuyenNganhList;
 }

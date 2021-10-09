@@ -1,7 +1,6 @@
 package com.n5_qlsv.controller;
 
 import com.n5_qlsv.entity.HocPhan;
-import com.n5_qlsv.entity.LopHoc;
 import com.n5_qlsv.service.HocPhanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

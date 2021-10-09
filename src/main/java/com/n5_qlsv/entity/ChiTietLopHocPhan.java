@@ -23,28 +23,25 @@ public class ChiTietLopHocPhan implements Serializable {
     @Column(name = "ma_ctlhp")
     private long maCTLHP;
 
-    @Column(name = "lich_hoc")
-    private String lichHoc;
+    @Column(name = "mo_ta_lich_hoc")
+    private String moTaLichHoc;
 
     @Column(name = "mo_ta")
     @Type(type = "org.hibernate.type.StringNVarcharType")
     private String moTa;
 
-    @Column(name = "ten_gv")
-    @Type(type = "org.hibernate.type.StringNVarcharType")
-    private String tenGV;
-
-    @Column(name = "trang_thai")
-    private String trangThai;
-
-    @Column(name = "so_phong")
-    private String soPhong;
+    @Column(name = "phong")
+    private String phong;
 
     @Column(name = "day_nha")
     private String dayNha;
 
-    @OneToMany(mappedBy = "chiTietLopHocPhan")
-    private List<PhieuDangKyLHP> phieuDangKyLHPList;
+    @Column(name = "nhom_th")
+    private int nhomTH;
+
+    @ManyToOne
+    @JoinColumn(name = "ma_gv")
+    private GiangVien giangVien;
 
     @ManyToOne
     @JoinColumn(name = "ma_lhp")

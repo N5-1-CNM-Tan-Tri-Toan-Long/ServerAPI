@@ -7,6 +7,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -52,21 +53,28 @@ public class SinhVien {
     @Type(type = "org.hibernate.type.StringNVarcharType")
     private String diaChi;
 
+    @Column(name = "role_name")
+    private String roleName;
+
+    private String password;
+
     @ManyToOne
     @JoinColumn(name = "ma_khoa")
     private Khoa khoa;
 
     @ManyToOne
-    @JoinColumn(name = "ma_hk")
-    private HocKy hocKy;
-
-    @ManyToOne
     @JoinColumn(name = "lop_hoc")
     private LopHoc lopHoc;
 
-    @OneToOne(mappedBy = "sinhVien",
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "ma_chuyen_nganh")
+    private ChuyenNganh chuyenNganh;
+
     @JsonIgnore
-    private User user;
+    @OneToMany(mappedBy = "sinhVien")
+    private List<KetQuaHocTap> ketQuaHocTapList;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "sinhVien")
+    private List<LichHocSinhVien> lichHocSinhVienList;
 }

@@ -1,5 +1,6 @@
 package com.n5_qlsv.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -31,4 +33,12 @@ public class ChuyenNganh {
     @ManyToOne
     @JoinColumn(name = "ma_khoa")
     private Khoa khoa;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "chuyenNganh")
+    private List<HocPhan> hocPhanList;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "chuyenNganh")
+    private List<SinhVien> sinhVienList;
 }
