@@ -1,5 +1,6 @@
 package com.n5_qlsv.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -54,6 +55,15 @@ public class LopHocPhan {
     @JoinColumn(name = "ma_hp")
     private HocPhan hocPhan;
 
-    @OneToMany(mappedBy = "lopHocPhan", cascade = CascadeType.ALL)
+    @JsonIgnore
+    @OneToMany(mappedBy = "lopHocPhan")
     private List<ChiTietLopHocPhan> chiTietLopHocPhanList;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "lopHocPhan")
+    private List<KetQuaHocTap> ketQuaHocTapList;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "lopHocPhan")
+    private List<LichHoc> lichHocList;
 }

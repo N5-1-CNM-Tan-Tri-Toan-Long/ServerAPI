@@ -36,11 +36,7 @@ public class HocKy {
     @Column(name = "thu_tu_hocky")
     private int thuTuHocKy;
 
-    @OneToMany(mappedBy = "hocKy")
     @JsonIgnore
-    private List<SinhVien> sinhVienList;
-
     @OneToMany(mappedBy = "hocKy")
-    @JsonIgnore
     private List<LopHocPhan> lopHocPhanList;
 }

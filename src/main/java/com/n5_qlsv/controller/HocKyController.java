@@ -1,9 +1,7 @@
 package com.n5_qlsv.controller;
 
 import com.n5_qlsv.entity.HocKy;
-import com.n5_qlsv.entity.User;
 import com.n5_qlsv.service.HocKyService;
-import com.n5_qlsv.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
