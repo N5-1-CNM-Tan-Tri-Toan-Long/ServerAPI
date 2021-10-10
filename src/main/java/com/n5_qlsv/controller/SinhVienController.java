@@ -28,6 +28,8 @@ public class SinhVienController {
 
     @PostMapping
     public SinhVien saveSinhVien(@RequestBody SinhVien sinhVien){
+        sinhVien.setPassword("1111");
+        sinhVien.setRoleName("USER");
         return sinhVienService.saveSinhVien(sinhVien);
     }
 
