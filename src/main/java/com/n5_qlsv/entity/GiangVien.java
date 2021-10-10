@@ -37,6 +37,10 @@ public class GiangVien {
     @Column(name = "email")
     private String email;
 
+    @ManyToOne
+    @JoinColumn(name = "ma_khoa")
+    private Khoa khoa;
+
     @JsonIgnore
     @OneToMany(mappedBy = "giangVien")
     private List<ChiTietLopHocPhan> chiTietLopHocPhanList;
