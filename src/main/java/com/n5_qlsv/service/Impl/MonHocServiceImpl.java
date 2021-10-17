@@ -47,4 +47,9 @@ public class MonHocServiceImpl implements MonHocService {
         monHoc.setMaMonHoc(maMonHoc);
         return monHocRepository.save(monHoc);
     }
+
+    @Override
+    public List<MonHoc> findMonHocNotInHocPhan() {
+        return monHocRepository.findMonHocNotInHocPhan();
+    }
 }

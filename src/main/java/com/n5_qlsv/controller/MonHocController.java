@@ -39,4 +39,9 @@ public class MonHocController {
     public void deleteMonHocById(@PathVariable("id") Long id){
         monHocService.deleteMonHocById(id);
     }
+
+    @GetMapping("/notinhocphan")
+    public List<MonHoc> findMonHocNotInHocPhan(){
+        return monHocService.findMonHocNotInHocPhan();
+    }
 }

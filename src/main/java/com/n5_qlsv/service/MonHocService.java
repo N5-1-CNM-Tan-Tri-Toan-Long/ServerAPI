@@ -10,4 +10,5 @@ public interface MonHocService {
     List<MonHoc> findAllMonHoc(int page, int size);
     void deleteMonHocById(Long maMonHoc);
     MonHoc updateMonHocById(Long maMonHoc, MonHoc monHoc);
+    List<MonHoc> findMonHocNotInHocPhan();
 }
