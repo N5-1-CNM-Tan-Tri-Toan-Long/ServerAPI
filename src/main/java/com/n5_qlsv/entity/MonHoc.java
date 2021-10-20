@@ -32,6 +32,8 @@ public class MonHoc {
     private String moTa;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "monHoc", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "monHoc",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
     private HocPhan hocPhan;
 }
