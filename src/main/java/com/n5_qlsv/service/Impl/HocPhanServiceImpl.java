@@ -1,7 +1,9 @@
 package com.n5_qlsv.service.Impl;
 
 import com.n5_qlsv.entity.HocPhan;
+import com.n5_qlsv.entity.MonHoc;
 import com.n5_qlsv.repository.HocPhanRepository;
+import com.n5_qlsv.repository.MonHocRepository;
 import com.n5_qlsv.service.HocPhanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -15,6 +17,9 @@ public class HocPhanServiceImpl implements HocPhanService {
 
     @Autowired
     private HocPhanRepository hocPhanRepository;
+
+    @Autowired
+    private MonHocRepository monHocRepository;
 
     @Override
     public HocPhan saveHocPhan(HocPhan hocPhan) {
@@ -40,6 +45,10 @@ public class HocPhanServiceImpl implements HocPhanService {
 
     @Override
     public void deleteHocPhanById(Long maHP) {
+        HocPhan hocPhan = hocPhanRepository.findById(maHP).get();
+        MonHoc monHoc = monHocRepository.findById(hocPhan.getMonHoc().getMaMonHoc()).get();
+        monHoc.setHocPhan(null);
+        monHocRepository.save(monHoc);
         hocPhanRepository.deleteById(maHP);
     }
 
