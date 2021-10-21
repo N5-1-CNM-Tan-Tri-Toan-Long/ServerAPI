@@ -1,5 +1,6 @@
 package com.n5_qlsv.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,6 +9,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -23,9 +25,6 @@ public class ChiTietLopHocPhan implements Serializable {
     @Column(name = "ma_ctlhp")
     private long maCTLHP;
 
-    @Column(name = "mo_ta_lich_hoc")
-    private String moTaLichHoc;
-
     @Column(name = "mo_ta")
     @Type(type = "org.hibernate.type.StringNVarcharType")
     private String moTa;
@@ -36,8 +35,17 @@ public class ChiTietLopHocPhan implements Serializable {
     @Column(name = "day_nha")
     private String dayNha;
 
-    @Column(name = "nhom_th")
-    private int nhomTH;
+    @Column(name = "co_so")
+    private String coSo;
+
+    @Column(name = "ngay_bat_dau")
+    private Date ngayBatDau;
+
+    @Column(name = "ngay_ket_thuc")
+    private Date ngayKetThuc;
+
+    @Column(name = "tiet_hoc")
+    private String tietHoc;
 
     @ManyToOne
     @JoinColumn(name = "ma_gv")
@@ -46,4 +54,9 @@ public class ChiTietLopHocPhan implements Serializable {
     @ManyToOne
     @JoinColumn(name = "ma_lhp")
     private LopHocPhan lopHocPhan;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "chiTietLopHocPhan")
+    private List<LichHocSinhVien> lichHocSinhVienList;
+
 }
