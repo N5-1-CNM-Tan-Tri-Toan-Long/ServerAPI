@@ -56,14 +56,10 @@ public class LopHocPhan {
     private HocPhan hocPhan;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "lopHocPhan")
+    @OneToMany(mappedBy = "lopHocPhan", cascade = CascadeType.ALL)
     private List<ChiTietLopHocPhan> chiTietLopHocPhanList;
 
     @JsonIgnore
     @OneToMany(mappedBy = "lopHocPhan")
     private List<KetQuaHocTap> ketQuaHocTapList;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "lopHocPhan")
-    private List<LichHoc> lichHocList;
 }

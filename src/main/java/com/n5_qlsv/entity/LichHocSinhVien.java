@@ -21,8 +21,8 @@ public class LichHocSinhVien {
     private long maLHSV;
 
     @ManyToOne
-    @JoinColumn(name = "ma_lich_hoc")
-    private LichHoc lichHoc;
+    @JoinColumn(name = "ma_ctlhp")
+    private ChiTietLopHocPhan chiTietLopHocPhan;
 
     @ManyToOne
     @JoinColumn(name = "ma_sv")
