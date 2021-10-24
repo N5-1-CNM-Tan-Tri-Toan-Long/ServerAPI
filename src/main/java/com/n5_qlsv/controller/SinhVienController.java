@@ -26,10 +26,13 @@ public class SinhVienController {
         return sinhVienService.findSinhVienById(id);
     }
 
+    @GetMapping("/{id}/role")
+    public String getRoleNameById(@PathVariable("id") Long id){
+        return sinhVienService.findRoleNameByMaSV(id);
+    }
+
     @PostMapping
     public SinhVien saveSinhVien(@RequestBody SinhVien sinhVien){
-        sinhVien.setPassword("1111");
-        sinhVien.setRoleName("USER");
         return sinhVienService.saveSinhVien(sinhVien);
     }
 

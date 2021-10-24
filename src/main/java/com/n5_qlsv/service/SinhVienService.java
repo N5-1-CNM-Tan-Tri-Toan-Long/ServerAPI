@@ -10,4 +10,5 @@ public interface SinhVienService {
     SinhVien updateSinhVienById(Long maSinhVien, SinhVien sinhVien);
     void deleteSinhVienById(Long maSinhVien);
     List<SinhVien> findAllSinhVien(int page, int size);
+        String findRoleNameByMaSV(Long maSV);
 }

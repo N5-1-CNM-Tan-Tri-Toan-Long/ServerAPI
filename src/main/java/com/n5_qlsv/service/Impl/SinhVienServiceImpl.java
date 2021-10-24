@@ -47,4 +47,9 @@ public class SinhVienServiceImpl implements SinhVienService {
             pageable = PageRequest.of(page, size);
         return sinhVienRepository.findAll(pageable).getContent();
     }
+
+    @Override
+    public String findRoleNameByMaSV(Long maSV) {
+        return sinhVienRepository.findRoleNameByMaSV(maSV);
+    }
 }
