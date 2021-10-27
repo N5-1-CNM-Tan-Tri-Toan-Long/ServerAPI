@@ -48,4 +48,9 @@ public class LichHocSVServiceImpl implements LichHocSVService {
         lichHocSinhVien.setMaLHSV(maLHSV);
         return lichHocSVRepository.save(lichHocSinhVien);
     }
+
+    @Override
+    public List<LichHocSinhVien> findByMaSV(long maSV) {
+        return lichHocSVRepository.findByMaSV(maSV);
+    }
 }
