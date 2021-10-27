@@ -14,6 +14,11 @@ public class LichHocSVController {
     @Autowired
     private LichHocSVService lichHocSVService;
 
+    @GetMapping("/masv/{maSV}")
+    public List<LichHocSinhVien> findByMaSV(@PathVariable("maSV") long maSV){
+        return lichHocSVService.findByMaSV(maSV);
+    }
+
     @GetMapping
     public List<LichHocSinhVien> findAllLichHocSV(@RequestParam(defaultValue = "0") int page,
                                                   @RequestParam (defaultValue = "0") int size){
