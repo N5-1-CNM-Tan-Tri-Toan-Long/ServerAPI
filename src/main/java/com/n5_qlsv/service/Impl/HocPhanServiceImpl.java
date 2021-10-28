@@ -23,12 +23,12 @@ public class HocPhanServiceImpl implements HocPhanService {
 
     @Override
     public HocPhan saveHocPhan(HocPhan hocPhan) {
-        hocPhan.setMaHocPhan(0);
+        hocPhan.setMaHocPhan("");
         return hocPhanRepository.save(hocPhan);
     }
 
     @Override
-    public HocPhan findHocPhanById(Long maHP) {
+    public HocPhan findHocPhanById(String maHP) {
         return hocPhanRepository.findById(maHP).get();
     }
 
@@ -44,7 +44,7 @@ public class HocPhanServiceImpl implements HocPhanService {
     }
 
     @Override
-    public void deleteHocPhanById(Long maHP) {
+    public void deleteHocPhanById(String maHP) {
         HocPhan hocPhan = hocPhanRepository.findById(maHP).get();
         MonHoc monHoc = monHocRepository.findById(hocPhan.getMonHoc().getMaMonHoc()).get();
         monHoc.setHocPhan(null);
@@ -53,7 +53,7 @@ public class HocPhanServiceImpl implements HocPhanService {
     }
 
     @Override
-    public HocPhan updateHocPhanById(Long maHP, HocPhan hocPhan) {
+    public HocPhan updateHocPhanById(String maHP, HocPhan hocPhan) {
         hocPhan.setMaHocPhan(maHP);
         return hocPhanRepository.save(hocPhan);
     }

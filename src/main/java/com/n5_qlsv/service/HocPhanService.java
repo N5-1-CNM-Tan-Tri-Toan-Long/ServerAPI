@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface HocPhanService {
     HocPhan saveHocPhan(HocPhan hocPhan);
-    HocPhan findHocPhanById(Long maHP);
+    HocPhan findHocPhanById(String maHP);
     List<HocPhan> findAllHocPhan(int page, int size);
-    void deleteHocPhanById(Long maHP);
-    HocPhan updateHocPhanById(Long maHP, HocPhan hocPhan);
+    void deleteHocPhanById(String maHP);
+    HocPhan updateHocPhanById(String maHP, HocPhan hocPhan);
 }

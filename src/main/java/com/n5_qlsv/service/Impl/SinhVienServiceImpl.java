@@ -18,23 +18,23 @@ public class SinhVienServiceImpl implements SinhVienService {
 
     @Override
     public SinhVien saveSinhVien(SinhVien sinhVien) {
-        sinhVien.setMaSV(0);
+        sinhVien.setMaSV("");
         return sinhVienRepository.save(sinhVien);
     }
 
     @Override
-    public SinhVien findSinhVienById(Long maSinhVien) {
+    public SinhVien findSinhVienById(String maSinhVien) {
         return sinhVienRepository.findById(maSinhVien).get();
     }
 
     @Override
-    public SinhVien updateSinhVienById(Long maSinhVien, SinhVien sinhVien) {
+    public SinhVien updateSinhVienById(String maSinhVien, SinhVien sinhVien) {
         sinhVien.setMaSV(maSinhVien);
         return sinhVienRepository.save(sinhVien);
     }
 
     @Override
-    public void deleteSinhVienById(Long maSinhVien) {
+    public void deleteSinhVienById(String maSinhVien) {
         sinhVienRepository.deleteById(maSinhVien);
     }
 
@@ -46,5 +46,15 @@ public class SinhVienServiceImpl implements SinhVienService {
         else
             pageable = PageRequest.of(page, size);
         return sinhVienRepository.findAll(pageable).getContent();
+    }
+
+    @Override
+    public String findRoleNameByMaSV(String maSV) {
+        return sinhVienRepository.findRoleNameByMaSV(maSV);
+    }
+
+    @Override
+    public List<SinhVien> search(String keyword) {
+        return sinhVienRepository.search(keyword);
     }
 }

@@ -21,7 +21,7 @@ public class HocPhanController {
     }
 
     @GetMapping("/{id}")
-    public HocPhan getHocPhanById(@PathVariable("id") Long id){
+    public HocPhan getHocPhanById(@PathVariable("id") String id){
         return hocPhanService.findHocPhanById(id);
     }
 
@@ -31,12 +31,12 @@ public class HocPhanController {
     }
 
     @PutMapping("/{id}")
-    public HocPhan updateHocPhan(@RequestBody HocPhan lopHoc, @PathVariable ("id") Long id){
+    public HocPhan updateHocPhan(@RequestBody HocPhan lopHoc, @PathVariable ("id") String id){
         return hocPhanService.updateHocPhanById(id, lopHoc);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteHocPhanById(@PathVariable("id") Long id){
+    public void deleteHocPhanById(@PathVariable("id") String id){
         hocPhanService.deleteHocPhanById(id);
     }
 }

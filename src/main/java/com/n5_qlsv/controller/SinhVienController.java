@@ -22,24 +22,32 @@ public class SinhVienController {
     }
 
     @GetMapping("/{id}")
-    public SinhVien getSinhVienById(@PathVariable("id") Long id){
+    public SinhVien getSinhVienById(@PathVariable("id") String id){
         return sinhVienService.findSinhVienById(id);
+    }
+
+    @GetMapping("/{id}/role")
+    public String getRoleNameById(@PathVariable("id") String id){
+        return sinhVienService.findRoleNameByMaSV(id);
     }
 
     @PostMapping
     public SinhVien saveSinhVien(@RequestBody SinhVien sinhVien){
-        sinhVien.setPassword("1111");
-        sinhVien.setRoleName("USER");
         return sinhVienService.saveSinhVien(sinhVien);
     }
 
     @PutMapping("/{id}")
-    public SinhVien updateSinhVien(@RequestBody SinhVien sinhVien, @PathVariable ("id") Long id){
+    public SinhVien updateSinhVien(@RequestBody SinhVien sinhVien, @PathVariable ("id") String id){
         return sinhVienService.updateSinhVienById(id, sinhVien);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteSinhVienById(@PathVariable("id") Long id){
+    public void deleteSinhVienById(@PathVariable("id") String id){
         sinhVienService.deleteSinhVienById(id);
+    }
+
+    @GetMapping("/keyword={keyword}")
+    public List<SinhVien> searchAllSinhViensByKeyword(@PathVariable(value = "keyword") String keyword){
+        return sinhVienService.search(keyword);
     }
 }
