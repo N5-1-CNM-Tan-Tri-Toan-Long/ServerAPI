@@ -52,4 +52,9 @@ public class SinhVienServiceImpl implements SinhVienService {
     public String findRoleNameByMaSV(String maSV) {
         return sinhVienRepository.findRoleNameByMaSV(maSV);
     }
+
+    @Override
+    public List<SinhVien> search(String keyword) {
+        return sinhVienRepository.search(keyword);
+    }
 }

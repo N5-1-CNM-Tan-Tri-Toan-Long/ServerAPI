@@ -45,4 +45,9 @@ public class SinhVienController {
     public void deleteSinhVienById(@PathVariable("id") String id){
         sinhVienService.deleteSinhVienById(id);
     }
+
+    @GetMapping("/keyword={keyword}")
+    public List<SinhVien> searchAllSinhViensByKeyword(@PathVariable(value = "keyword") String keyword){
+        return sinhVienService.search(keyword);
+    }
 }
