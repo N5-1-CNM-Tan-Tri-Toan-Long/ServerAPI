@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface SinhVienService {
     SinhVien saveSinhVien(SinhVien sinhVien);
-    SinhVien findSinhVienById(Long maSinhVien);
-    SinhVien updateSinhVienById(Long maSinhVien, SinhVien sinhVien);
-    void deleteSinhVienById(Long maSinhVien);
+    SinhVien findSinhVienById(String maSinhVien);
+    SinhVien updateSinhVienById(String maSinhVien, SinhVien sinhVien);
+    void deleteSinhVienById(String maSinhVien);
     List<SinhVien> findAllSinhVien(int page, int size);
-        String findRoleNameByMaSV(Long maSV);
+    String findRoleNameByMaSV(String maSV);
 }

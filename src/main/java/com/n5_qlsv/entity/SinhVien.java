@@ -3,6 +3,7 @@ package com.n5_qlsv.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -18,9 +19,10 @@ import java.util.List;
 public class SinhVien {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "gen")
+    @GenericGenerator(name = "gen", strategy = "com.n5_qlsv.entity.SinhVienGenerator")
     @Column(name = "ma_sv")
-    private long maSV;
+    private String maSV;
 
     @Column(name = "ten_sv")
     @Type(type = "org.hibernate.type.StringNVarcharType")

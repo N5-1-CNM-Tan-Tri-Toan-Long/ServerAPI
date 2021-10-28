@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface SinhVienRepository extends JpaRepository<SinhVien, Long> {
+public interface SinhVienRepository extends JpaRepository<SinhVien, String> {
 
     @Query(value = "SELECT sv.role_name FROM tbl_sinhvien sv where ma_sv = :maSV", nativeQuery = true)
-    String findRoleNameByMaSV(Long maSV);
+    String findRoleNameByMaSV(String maSV);
 
 }
