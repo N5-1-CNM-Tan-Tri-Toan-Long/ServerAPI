@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
@@ -18,9 +19,10 @@ import java.util.List;
 public class HocPhan {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "gen")
+    @GenericGenerator(name = "gen", strategy = "com.n5_qlsv.entity.HocPhanGenerator")
     @Column(name = "ma_hp")
-    private long maHocPhan;
+    private String maHocPhan;
 
     @Column(name = "hoc_phan_bat_buoc")
     private boolean hocPhanBatBuoc;

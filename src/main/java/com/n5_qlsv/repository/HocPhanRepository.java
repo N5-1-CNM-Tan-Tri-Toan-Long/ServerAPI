@@ -10,5 +10,5 @@ import java.awt.print.Pageable;
 import java.util.List;
 
 @Repository
-public interface HocPhanRepository extends JpaRepository<HocPhan, Long> {
+public interface HocPhanRepository extends JpaRepository<HocPhan, String> {
 }
