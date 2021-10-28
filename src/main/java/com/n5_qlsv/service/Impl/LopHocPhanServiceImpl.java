@@ -46,4 +46,9 @@ public class LopHocPhanServiceImpl implements LopHocPhanService {
         lopHocPhan.setMaLHP(maLHP);
         return lopHocPhanRepository.save(lopHocPhan);
     }
+
+    @Override
+    public List<LopHocPhan> findLHPByMaHK(long maHK) {
+        return lopHocPhanRepository.findLHPByMaHK(maHK);
+    }
 }

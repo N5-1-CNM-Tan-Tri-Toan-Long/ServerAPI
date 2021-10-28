@@ -12,4 +12,5 @@ public interface LopHocPhanService {
     List<LopHocPhan> findAllLopHocPhan(int page, int size);
     void deleteLopHocPhanById(Long maLHP);
     LopHocPhan updateLopHocPhanById(Long maLHP, LopHocPhan lopHocPhan);
+    List<LopHocPhan> findLHPByMaHK(long maHK);
 }
