@@ -57,4 +57,9 @@ public class LopHocPhanController {
         chiTietLopHocPhan.setLopHocPhan(lopHocPhan);
         return ctlhpService.saveChiTietLHP(chiTietLopHocPhan);
     }
+
+    @GetMapping("/{maHK}/mahk")
+    public List<LopHocPhan> findLHPsByMaLHP(@PathVariable("maHK") Long maHK){
+       return lopHocPhanService.findLHPByMaHK(maHK);
+    }
 }

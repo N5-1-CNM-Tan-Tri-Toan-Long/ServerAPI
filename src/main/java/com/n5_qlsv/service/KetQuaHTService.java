@@ -12,4 +12,5 @@ public interface KetQuaHTService {
     List<KetQuaHocTap> findAllKQHT(int page, int size);
     void deleteKQHTById(Long maKQHT);
     KetQuaHocTap updateKQHTById(Long maKQHT, KetQuaHocTap ketQuaHocTap);
+    List<KetQuaHocTap> findKQHTByMaSV(Long maSV);
 }

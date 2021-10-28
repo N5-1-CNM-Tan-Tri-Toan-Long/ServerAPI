@@ -47,4 +47,9 @@ public class KetQuaHTServiceImpl implements KetQuaHTService {
         ketQuaHocTap.setMaKQHT(maKQHT);
         return ketQuaHocTapRepository.save(ketQuaHocTap);
     }
+
+    @Override
+    public List<KetQuaHocTap> findKQHTByMaSV(Long maSV) {
+        return ketQuaHocTapRepository.findKQHTByMaSV(maSV);
+    }
 }
