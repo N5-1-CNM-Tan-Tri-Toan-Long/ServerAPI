@@ -11,5 +11,5 @@ import java.util.List;
 public interface KetQuaHocTapRepository extends JpaRepository<KetQuaHocTap, Long> {
 
     @Query("select kq from KetQuaHocTap kq where kq.sinhVien.maSV = ?1")
-    List<KetQuaHocTap> findKQHTByMaSV(long maSV);
+    List<KetQuaHocTap> findKQHTByMaSV(String maSV);
 }
