@@ -49,7 +49,7 @@ public class KetQuaHTServiceImpl implements KetQuaHTService {
     }
 
     @Override
-    public List<KetQuaHocTap> findKQHTByMaSV(Long maSV) {
+    public List<KetQuaHocTap> findKQHTByMaSV(String maSV) {
         return ketQuaHocTapRepository.findKQHTByMaSV(maSV);
     }
 }

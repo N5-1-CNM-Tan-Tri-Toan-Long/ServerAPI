@@ -50,7 +50,7 @@ public class LichHocSVServiceImpl implements LichHocSVService {
     }
 
     @Override
-    public List<LichHocSinhVien> findByMaSV(long maSV) {
+    public List<LichHocSinhVien> findByMaSV(String maSV) {
         return lichHocSVRepository.findByMaSV(maSV);
     }
 }

@@ -15,7 +15,7 @@ public class LichHocSVController {
     private LichHocSVService lichHocSVService;
 
     @GetMapping("/masv/{maSV}")
-    public List<LichHocSinhVien> findByMaSV(@PathVariable("maSV") long maSV){
+    public List<LichHocSinhVien> findByMaSV(@PathVariable("maSV") String maSV){
         return lichHocSVService.findByMaSV(maSV);
     }
 

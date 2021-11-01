@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface LichHocSVRepository extends JpaRepository<LichHocSinhVien, Long> {
     @Query(value = "FROM LichHocSinhVien L WHERE L.sinhVien.maSV = ?1")
-    List<LichHocSinhVien> findByMaSV(long maSV);
+    List<LichHocSinhVien> findByMaSV(String maSV);
 }

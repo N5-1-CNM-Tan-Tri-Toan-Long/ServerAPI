@@ -35,7 +35,7 @@ public class KetQuaHTController {
     }
 
     @GetMapping("/{maSV}/masv")
-    public List<KetQuaHocTap> findKQHTByMaSV(@PathVariable("maSV") Long maSV){
+    public List<KetQuaHocTap> findKQHTByMaSV(@PathVariable("maSV") String maSV){
         return ketQuaHTService.findKQHTByMaSV(maSV);
     }
 
