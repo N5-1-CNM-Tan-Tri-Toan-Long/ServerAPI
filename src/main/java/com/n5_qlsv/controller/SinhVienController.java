@@ -50,4 +50,11 @@ public class SinhVienController {
     public List<SinhVien> searchAllSinhViensByKeyword(@PathVariable(value = "keyword") String keyword){
         return sinhVienService.search(keyword);
     }
+
+    @GetMapping("/khoa={maKhoa}")
+    public  List<SinhVien> findAllSinhViensByKhoa(@PathVariable(value = "maKhoa") Long maKhoa,
+                                                  @RequestParam (defaultValue = "0") int page,
+                                                  @RequestParam (defaultValue = "0") int size){
+        return sinhVienService.findAllSinhViensByKhoa(maKhoa, page, size);
+    }
 }

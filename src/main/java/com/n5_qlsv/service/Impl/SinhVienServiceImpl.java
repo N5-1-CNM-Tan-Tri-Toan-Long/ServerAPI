@@ -4,6 +4,7 @@ import com.n5_qlsv.entity.SinhVien;
 import com.n5_qlsv.repository.SinhVienRepository;
 import com.n5_qlsv.service.SinhVienService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -56,5 +57,15 @@ public class SinhVienServiceImpl implements SinhVienService {
     @Override
     public List<SinhVien> search(String keyword) {
         return sinhVienRepository.search(keyword);
+    }
+
+    @Override
+    public List<SinhVien> findAllSinhViensByKhoa(Long maKhoa, int page, int size) {
+        Pageable pageable;
+        if(page < 0 || size <= 0)
+            pageable = Pageable.unpaged();
+        else
+            pageable = PageRequest.of(page, size);
+        return sinhVienRepository.findAllByKhoa(maKhoa, pageable);
     }
 }
