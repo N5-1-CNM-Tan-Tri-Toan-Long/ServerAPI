@@ -16,39 +16,41 @@ public class SinhVienController {
     private SinhVienService sinhVienService;
 
     @GetMapping
-    public List<SinhVien> getAllSinhVien(@RequestParam (defaultValue = "0") int page
-            , @RequestParam (defaultValue = "0") int size){
+    public List<SinhVien> getAllSinhVien(@RequestParam(defaultValue = "0") int page
+            , @RequestParam(defaultValue = "0") int size) {
         return sinhVienService.findAllSinhVien(page, size);
     }
 
     @GetMapping("/{id}")
-    public SinhVien getSinhVienById(@PathVariable("id") String id){
+    public SinhVien getSinhVienById(@PathVariable("id") String id) {
         return sinhVienService.findSinhVienById(id);
     }
 
     @GetMapping("/{id}/role")
-    public String getRoleNameById(@PathVariable("id") String id){
+    public String getRoleNameById(@PathVariable("id") String id) {
         return sinhVienService.findRoleNameByMaSV(id);
     }
 
     @PostMapping
-    public SinhVien saveSinhVien(@RequestBody SinhVien sinhVien){
+    public SinhVien saveSinhVien(@RequestBody SinhVien sinhVien) {
         return sinhVienService.saveSinhVien(sinhVien);
     }
 
     @PutMapping("/{id}")
-    public SinhVien updateSinhVien(@RequestBody SinhVien sinhVien, @PathVariable ("id") String id){
+    public SinhVien updateSinhVien(@RequestBody SinhVien sinhVien, @PathVariable("id") String id) {
         return sinhVienService.updateSinhVienById(id, sinhVien);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteSinhVienById(@PathVariable("id") String id){
+    public void deleteSinhVienById(@PathVariable("id") String id) {
         sinhVienService.deleteSinhVienById(id);
     }
 
     @GetMapping("/keyword={keyword}")
-    public List<SinhVien> searchAllSinhViensByKeyword(@PathVariable(value = "keyword") String keyword){
-        return sinhVienService.search(keyword);
+    public List<SinhVien> searchAllSinhViensByKeyword(@PathVariable(value = "keyword") String keyword
+            , @RequestParam(defaultValue = "0") int page
+            , @RequestParam(defaultValue = "0") int size) {
+        return sinhVienService.search(keyword, page, size);
     }
 
     @GetMapping("/khoa={maKhoa}")
