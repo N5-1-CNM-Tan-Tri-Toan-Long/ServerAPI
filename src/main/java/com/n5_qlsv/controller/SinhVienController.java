@@ -52,4 +52,11 @@ public class SinhVienController {
             , @RequestParam(defaultValue = "0") int size) {
         return sinhVienService.search(keyword, page, size);
     }
+
+    @GetMapping("/khoa={maKhoa}")
+    public  List<SinhVien> findAllSinhViensByKhoa(@PathVariable(value = "maKhoa") Long maKhoa,
+                                                  @RequestParam (defaultValue = "0") int page,
+                                                  @RequestParam (defaultValue = "0") int size){
+        return sinhVienService.findAllSinhViensByKhoa(maKhoa, page, size);
+    }
 }
