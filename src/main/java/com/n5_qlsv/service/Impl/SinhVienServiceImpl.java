@@ -54,7 +54,12 @@ public class SinhVienServiceImpl implements SinhVienService {
     }
 
     @Override
-    public List<SinhVien> search(String keyword) {
-        return sinhVienRepository.search(keyword);
+    public List<SinhVien> search(String keyword, int page, int size) {
+        Pageable pageable;
+        if(page < 0 || size <= 0)
+            pageable = Pageable.unpaged();
+        else
+            pageable = PageRequest.of(page, size);
+        return sinhVienRepository.search(keyword, pageable);
     }
 }

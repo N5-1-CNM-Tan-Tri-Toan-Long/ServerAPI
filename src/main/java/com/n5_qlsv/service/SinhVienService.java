@@ -11,5 +11,5 @@ public interface SinhVienService {
     void deleteSinhVienById(String maSinhVien);
     List<SinhVien> findAllSinhVien(int page, int size);
     String findRoleNameByMaSV(String maSV);
-    List<SinhVien> search(String keyword);
+    List<SinhVien> search(String keyword, int page, int size);
 }

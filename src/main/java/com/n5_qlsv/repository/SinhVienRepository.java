@@ -1,6 +1,7 @@
 package com.n5_qlsv.repository;
 
 import com.n5_qlsv.entity.SinhVien;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -15,5 +16,5 @@ public interface SinhVienRepository extends JpaRepository<SinhVien, String> {
     String findRoleNameByMaSV(String maSV);
 
     @Query("SELECT sv FROM SinhVien sv WHERE sv.maSV LIKE %?1% OR sv.tenSV LIKE %?1%")
-    List<SinhVien> search(String keyword);
+    List<SinhVien> search(String keyword, Pageable pageable);
 }
