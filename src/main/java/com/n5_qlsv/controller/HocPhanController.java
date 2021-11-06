@@ -39,4 +39,10 @@ public class HocPhanController {
     public void deleteHocPhanById(@PathVariable("id") String id){
         hocPhanService.deleteHocPhanById(id);
     }
+
+    //find mã học kỳ ra học phần
+    @GetMapping("/{maHK}/mahk")
+    public List<HocPhan> getHocPhanById(@PathVariable("maHK") long maHK){
+        return hocPhanService.findHPByMaHK(maHK);
+    }
 }

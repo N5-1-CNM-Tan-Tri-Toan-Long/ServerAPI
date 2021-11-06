@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/ketquahoctap")
@@ -37,6 +38,11 @@ public class KetQuaHTController {
     @GetMapping("/{maSV}/masv")
     public List<KetQuaHocTap> findKQHTByMaSV(@PathVariable("maSV") String maSV){
         return ketQuaHTService.findKQHTByMaSV(maSV);
+    }
+
+    @GetMapping("/{maSV}/hk")
+    public Set<Long> findMaHKByMaSV(@PathVariable("maSV") String maSV){
+        return ketQuaHTService.findMaHKByMaSV(maSV);
     }
 
 }
