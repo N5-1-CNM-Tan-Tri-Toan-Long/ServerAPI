@@ -4,6 +4,7 @@ import com.n5_qlsv.entity.SinhVien;
 import com.n5_qlsv.service.SinhVienService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -54,9 +55,14 @@ public class SinhVienController {
     }
 
     @GetMapping("/khoa={maKhoa}")
-    public  List<SinhVien> findAllSinhViensByKhoa(@PathVariable(value = "maKhoa") Long maKhoa,
-                                                  @RequestParam (defaultValue = "0") int page,
-                                                  @RequestParam (defaultValue = "0") int size){
+    public List<SinhVien> findAllSinhViensByKhoa(@PathVariable(value = "maKhoa") Long maKhoa,
+                                                 @RequestParam(defaultValue = "0") int page,
+                                                 @RequestParam(defaultValue = "0") int size) {
         return sinhVienService.findAllSinhViensByKhoa(maKhoa, page, size);
+    }
+
+    @PostMapping("/upload")
+    public void uploadFile(@RequestParam("file") MultipartFile file) {
+        sinhVienService.saveSinhVienByFile(file);
     }
 }
