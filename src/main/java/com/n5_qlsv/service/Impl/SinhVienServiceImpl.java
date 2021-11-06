@@ -1,14 +1,16 @@
 package com.n5_qlsv.service.Impl;
 
 import com.n5_qlsv.entity.SinhVien;
+import com.n5_qlsv.helper.ExcelHelperSinhVien;
 import com.n5_qlsv.repository.SinhVienRepository;
 import com.n5_qlsv.service.SinhVienService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -72,5 +74,15 @@ public class SinhVienServiceImpl implements SinhVienService {
         else
             pageable = PageRequest.of(page, size);
         return sinhVienRepository.findAllByKhoa(maKhoa, pageable);
+    }
+
+    @Override
+    public void saveSinhVienByFile(MultipartFile file) {
+        try {
+            List<SinhVien> sinhVienList = ExcelHelperSinhVien.excelToTutorials(file.getInputStream());
+            sinhVienRepository.saveAll(sinhVienList);
+        } catch (IOException e) {
+            throw new RuntimeException("fail to store excel data: " + e.getMessage());
+        }
     }
 }

@@ -4,6 +4,7 @@ import com.n5_qlsv.entity.Khoa;
 import com.n5_qlsv.service.KhoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -40,4 +41,8 @@ public class KhoaController {
         khoaService.deleteKhoaById(id);
     }
 
+    @PostMapping("/upload")
+    public void uploadFile(@RequestParam("file") MultipartFile file) {
+        khoaService.saveKhoaByFile(file);
+    }
 }
