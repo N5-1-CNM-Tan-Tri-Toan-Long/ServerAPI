@@ -4,6 +4,7 @@ import com.n5_qlsv.entity.GiangVien;
 import com.n5_qlsv.service.GiangVienService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -38,5 +39,10 @@ public class GiangVienController {
     @DeleteMapping("/{id}")
     public void deleteGiangVienById(@PathVariable("id") Long id) {
         giangVienService.deleteGiangVienById(id);
+    }
+
+    @PostMapping("/upload")
+    public void  uploadFile(@RequestParam("file") MultipartFile file) {
+        giangVienService.saveGiangVienByFile(file);
     }
 }

@@ -1,6 +1,6 @@
 package com.n5_qlsv.helper;
 
-import com.n5_qlsv.entity.HocKy;
+import com.n5_qlsv.entity.*;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -14,11 +14,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class ExcelHelperHocKy {
-
+public class ExcelHelperLopHocPhan {
     public static String TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-    static String[] HEADERs = { "Mô tả", "Năm bắt đầu", "Năm kết thúc", "Thứ tự học kì" };
-    static String SHEET = "HocKi";
+    static String SHEET = "LopHocPhan";
 
     public static boolean hasExcelFormat(MultipartFile file) {
 
@@ -29,14 +27,14 @@ public class ExcelHelperHocKy {
         return true;
     }
 
-    public static List<HocKy> excelToTutorials(InputStream is) {
+    public static List<LopHocPhan> excelToTutorials(InputStream is) {
         try {
             Workbook workbook = new XSSFWorkbook(is);
 
             Sheet sheet = workbook.getSheet(SHEET);
             Iterator<Row> rows = sheet.iterator();
 
-            List<HocKy> tutorials = new ArrayList<HocKy>();
+            List<LopHocPhan> tutorials = new ArrayList<LopHocPhan>();
 
             int rowNumber = 0;
             while (rows.hasNext()) {
@@ -50,7 +48,7 @@ public class ExcelHelperHocKy {
 
                 Iterator<Cell> cellsInRow = currentRow.iterator();
 
-                HocKy hocKy = new HocKy();
+                LopHocPhan lopHocPhan = new LopHocPhan();
 
                 int cellIdx = 0;
                 while (cellsInRow.hasNext()) {
@@ -62,19 +60,39 @@ public class ExcelHelperHocKy {
 //                            break;
 
                         case 1:
-                            hocKy.setMoTa(currentCell.getStringCellValue());
+                            lopHocPhan.setMoTa(currentCell.getStringCellValue());
                             break;
 
                         case 2:
-                            hocKy.setNamBatDau((int) currentCell.getNumericCellValue());
+                            lopHocPhan.setSoLuongDangKyHienTai((int) currentCell.getNumericCellValue());
                             break;
 
                         case 3:
-                            hocKy.setNamKetThuc((int) currentCell.getNumericCellValue());
+                            lopHocPhan.setSoLuongDangKyToiDa((int) currentCell.getNumericCellValue());
                             break;
 
                         case 4:
-                            hocKy.setThuTuHocKy((int) currentCell.getNumericCellValue());
+                            lopHocPhan.setSoNhomTH((int) currentCell.getNumericCellValue());
+                            break;
+
+                        case 5:
+                            lopHocPhan.setTenLHP(currentCell.getStringCellValue());
+                            break;
+
+                        case 6:
+                            lopHocPhan.setTenVietTat(currentCell.getStringCellValue());
+                            break;
+
+                        case 7:
+                            lopHocPhan.setTrangThai(currentCell.getStringCellValue());
+                            break;
+
+                        case 8:
+                            lopHocPhan.setHocKy(new HocKy().builder().maHK((long) currentCell.getNumericCellValue()).build());
+                            break;
+
+                        case 9:
+                            lopHocPhan.setHocPhan(new HocPhan().builder().maHocPhan(currentCell.getStringCellValue()).build());
                             break;
 
                         default:
@@ -84,7 +102,7 @@ public class ExcelHelperHocKy {
                     cellIdx++;
                 }
 
-                tutorials.add(hocKy);
+                tutorials.add(lopHocPhan);
             }
 
             workbook.close();

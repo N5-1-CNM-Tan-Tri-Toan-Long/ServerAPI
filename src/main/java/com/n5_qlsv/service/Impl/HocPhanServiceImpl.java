@@ -1,7 +1,10 @@
 package com.n5_qlsv.service.Impl;
 
+import com.n5_qlsv.entity.HocKy;
 import com.n5_qlsv.entity.HocPhan;
 import com.n5_qlsv.entity.MonHoc;
+import com.n5_qlsv.helper.ExcelHelper;
+import com.n5_qlsv.helper.ExcelHelperHocPhan;
 import com.n5_qlsv.repository.HocPhanRepository;
 import com.n5_qlsv.repository.MonHocRepository;
 import com.n5_qlsv.service.HocPhanService;
@@ -9,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -61,5 +66,15 @@ public class HocPhanServiceImpl implements HocPhanService {
     @Override
     public List<HocPhan> findHPByMaHK(long maHK) {
         return hocPhanRepository.findHPByMaHK(maHK);
+    }
+
+    @Override
+    public void saveHocPhanByFile(MultipartFile file) {
+        try {
+            List<HocPhan> hocPhanList = ExcelHelperHocPhan.excelToTutorials(file.getInputStream());
+            hocPhanRepository.saveAll(hocPhanList);
+        } catch (IOException e) {
+            throw new RuntimeException("fail to store excel data: " + e.getMessage());
+        }
     }
 }

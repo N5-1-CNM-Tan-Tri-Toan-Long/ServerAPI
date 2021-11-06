@@ -1,13 +1,20 @@
 package com.n5_qlsv.service.Impl;
 
+import com.n5_qlsv.entity.HocPhan;
+import com.n5_qlsv.entity.LopHoc;
 import com.n5_qlsv.entity.MonHoc;
+import com.n5_qlsv.helper.ExcelHelperHocPhan;
+import com.n5_qlsv.helper.ExcelHelperLopHoc;
+import com.n5_qlsv.helper.ExcelHelperMonHoc;
 import com.n5_qlsv.repository.MonHocRepository;
 import com.n5_qlsv.service.MonHocService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -51,5 +58,15 @@ public class MonHocServiceImpl implements MonHocService {
     @Override
     public List<MonHoc> findMonHocNotInHocPhan() {
         return monHocRepository.findMonHocNotInHocPhan();
+    }
+
+    @Override
+    public void saveMonHocByFile(MultipartFile file) {
+        try {
+            List<MonHoc> monHocList = ExcelHelperMonHoc.excelToTutorials(file.getInputStream());
+            monHocRepository.saveAll(monHocList);
+        } catch (IOException e) {
+            throw new RuntimeException("fail to store excel data: " + e.getMessage());
+        }
     }
 }

@@ -1,13 +1,18 @@
 package com.n5_qlsv.service.Impl;
 
+import com.n5_qlsv.entity.HocPhan;
 import com.n5_qlsv.entity.LopHocPhan;
+import com.n5_qlsv.helper.ExcelHelperHocPhan;
+import com.n5_qlsv.helper.ExcelHelperLopHocPhan;
 import com.n5_qlsv.repository.LopHocPhanRepository;
 import com.n5_qlsv.service.LopHocPhanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -50,5 +55,15 @@ public class LopHocPhanServiceImpl implements LopHocPhanService {
     @Override
     public List<LopHocPhan> findLHPByMaHK(long maHK) {
         return lopHocPhanRepository.findLHPByMaHK(maHK);
+    }
+
+    @Override
+    public void saveLopHocPhanByFile(MultipartFile file) {
+        try {
+            List<LopHocPhan> lophocPhanList = ExcelHelperLopHocPhan.excelToTutorials(file.getInputStream());
+            lopHocPhanRepository.saveAll(lophocPhanList);
+        } catch (IOException e) {
+            throw new RuntimeException("fail to store excel data: " + e.getMessage());
+        }
     }
 }

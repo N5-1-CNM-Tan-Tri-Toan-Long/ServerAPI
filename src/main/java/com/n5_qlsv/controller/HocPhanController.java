@@ -1,9 +1,14 @@
 package com.n5_qlsv.controller;
 
 import com.n5_qlsv.entity.HocPhan;
+import com.n5_qlsv.helper.ExcelHelper;
+import com.n5_qlsv.message.ResponseMessage;
 import com.n5_qlsv.service.HocPhanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -44,5 +49,10 @@ public class HocPhanController {
     @GetMapping("/{maHK}/mahk")
     public List<HocPhan> getHocPhanById(@PathVariable("maHK") long maHK){
         return hocPhanService.findHPByMaHK(maHK);
+    }
+
+    @PostMapping("/upload")
+    public void  uploadFile(@RequestParam("file") MultipartFile file) {
+                hocPhanService.saveHocPhanByFile(file);
     }
 }

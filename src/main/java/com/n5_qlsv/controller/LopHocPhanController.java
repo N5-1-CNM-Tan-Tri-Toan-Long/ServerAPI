@@ -6,6 +6,7 @@ import com.n5_qlsv.service.CTLHPService;
 import com.n5_qlsv.service.LopHocPhanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -61,5 +62,10 @@ public class LopHocPhanController {
     @GetMapping("/{maHK}/mahk")
     public List<LopHocPhan> findLHPsByMaLHP(@PathVariable("maHK") Long maHK){
        return lopHocPhanService.findLHPByMaHK(maHK);
+    }
+
+    @PostMapping("/upload")
+    public void  uploadFile(@RequestParam("file") MultipartFile file) {
+        lopHocPhanService.saveLopHocPhanByFile(file);
     }
 }
