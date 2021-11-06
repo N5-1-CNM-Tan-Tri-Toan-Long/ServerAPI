@@ -30,6 +30,11 @@ public class LopHocPhanController {
         return lopHocPhanService.findLopHocPhanById(id);
     }
 
+    @GetMapping("/mahocphan/{maHP}")
+    public List<LopHocPhan> findByMaHocPhan(@PathVariable("maHP") String maHP){
+        return lopHocPhanService.findByMaHocPhan(maHP);
+    }
+
     @PostMapping
     public LopHocPhan saveLopHocPhan(@RequestBody LopHocPhan lopHocPhan){
         return lopHocPhanService.saveLopHocPhan(lopHocPhan);

@@ -11,6 +11,7 @@ public interface LopHocPhanService {
     LopHocPhan saveLopHocPhan(LopHocPhan lopHocPhan);
     LopHocPhan findLopHocPhanById(Long maLHP);
     List<LopHocPhan> findAllLopHocPhan(int page, int size);
+    List<LopHocPhan> findByMaHocPhan(String maHocPhan);
     void deleteLopHocPhanById(Long maLHP);
     LopHocPhan updateLopHocPhanById(Long maLHP, LopHocPhan lopHocPhan);
     List<LopHocPhan> findLHPByMaHK(long maHK);

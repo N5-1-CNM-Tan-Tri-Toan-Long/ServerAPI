@@ -12,4 +12,7 @@ public interface LopHocPhanRepository extends JpaRepository<LopHocPhan, Long> {
 
     @Query(value = "select S from LopHocPhan S WHERE S.hocKy.maHK = ?1")
     List<LopHocPhan> findLHPByMaHK(long maHK);
+
+    @Query(value = "FROM LopHocPhan L WHERE L.hocPhan.maHocPhan = ?1")
+    List<LopHocPhan> findLHPByMaHocPhan(String maHocPhan);
 }

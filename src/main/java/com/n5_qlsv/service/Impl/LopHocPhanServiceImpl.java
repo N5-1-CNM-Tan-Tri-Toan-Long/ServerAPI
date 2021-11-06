@@ -42,6 +42,11 @@ public class LopHocPhanServiceImpl implements LopHocPhanService {
     }
 
     @Override
+    public List<LopHocPhan> findByMaHocPhan(String maHocPhan) {
+        return lopHocPhanRepository.findLHPByMaHocPhan(maHocPhan);
+    }
+
+    @Override
     public void deleteLopHocPhanById(Long maLHP) {
         lopHocPhanRepository.deleteById(maLHP);
     }
