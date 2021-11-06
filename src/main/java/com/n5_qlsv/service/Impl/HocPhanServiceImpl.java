@@ -57,4 +57,9 @@ public class HocPhanServiceImpl implements HocPhanService {
         hocPhan.setMaHocPhan(maHP);
         return hocPhanRepository.save(hocPhan);
     }
+
+    @Override
+    public List<HocPhan> findHPByMaHK(long maHK) {
+        return hocPhanRepository.findHPByMaHK(maHK);
+    }
 }

@@ -6,10 +6,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public interface KetQuaHocTapRepository extends JpaRepository<KetQuaHocTap, Long> {
 
     @Query("select kq from KetQuaHocTap kq where kq.sinhVien.maSV = ?1")
     List<KetQuaHocTap> findKQHTByMaSV(String maSV);
+    @Query(value = "SELECT DISTINCT ma_hk FROM hotrosinhvien.tbl_kqht k join tbl_lophocphan l on k.ma_lhp = l.ma_lhp where ma_sv = ?1", nativeQuery = true)
+    Set<Long> findMaHKByMaSV(String maSV);
 }

@@ -10,4 +10,5 @@ public interface HocPhanService {
     List<HocPhan> findAllHocPhan(int page, int size);
     void deleteHocPhanById(String maHP);
     HocPhan updateHocPhanById(String maHP, HocPhan hocPhan);
+    List<HocPhan> findHPByMaHK(long maHK);
 }
