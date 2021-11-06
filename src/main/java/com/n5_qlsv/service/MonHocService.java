@@ -1,6 +1,7 @@
 package com.n5_qlsv.service;
 
 import com.n5_qlsv.entity.MonHoc;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -11,4 +12,5 @@ public interface MonHocService {
     void deleteMonHocById(Long maMonHoc);
     MonHoc updateMonHocById(Long maMonHoc, MonHoc monHoc);
     List<MonHoc> findMonHocNotInHocPhan();
+    void saveMonHocByFile(MultipartFile file);
 }

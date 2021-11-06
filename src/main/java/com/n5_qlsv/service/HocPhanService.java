@@ -1,6 +1,7 @@
 package com.n5_qlsv.service;
 
 import com.n5_qlsv.entity.HocPhan;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -10,4 +11,5 @@ public interface HocPhanService {
     List<HocPhan> findAllHocPhan(int page, int size);
     void deleteHocPhanById(String maHP);
     HocPhan updateHocPhanById(String maHP, HocPhan hocPhan);
+    void saveHocPhanByFile(MultipartFile file);
 }

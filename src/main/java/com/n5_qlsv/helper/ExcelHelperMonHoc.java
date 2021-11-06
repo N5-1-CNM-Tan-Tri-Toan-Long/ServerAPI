@@ -1,7 +1,6 @@
 package com.n5_qlsv.helper;
 
-import com.n5_qlsv.entity.HocKy;
-import com.n5_qlsv.entity.HocPhan;
+import com.n5_qlsv.entity.MonHoc;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -15,11 +14,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class ExcelHelper {
-
+public class ExcelHelperMonHoc {
     public static String TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-    static String[] HEADERs = { "Mô tả", "Năm bắt đầu", "Năm kết thúc", "Thứ tự học kì" };
-    static String SHEET = "HocKi";
+    static String SHEET = "MonHoc";
 
     public static boolean hasExcelFormat(MultipartFile file) {
 
@@ -30,14 +27,14 @@ public class ExcelHelper {
         return true;
     }
 
-    public static List<HocKy> excelToTutorials(InputStream is) {
+    public static List<MonHoc> excelToTutorials(InputStream is) {
         try {
             Workbook workbook = new XSSFWorkbook(is);
 
             Sheet sheet = workbook.getSheet(SHEET);
             Iterator<Row> rows = sheet.iterator();
 
-            List<HocKy> tutorials = new ArrayList<HocKy>();
+            List<MonHoc> tutorials = new ArrayList<MonHoc>();
 
             int rowNumber = 0;
             while (rows.hasNext()) {
@@ -51,7 +48,7 @@ public class ExcelHelper {
 
                 Iterator<Cell> cellsInRow = currentRow.iterator();
 
-                HocKy hocKy = new HocKy();
+                MonHoc monHoc = new MonHoc();
 
                 int cellIdx = 0;
                 while (cellsInRow.hasNext()) {
@@ -63,19 +60,11 @@ public class ExcelHelper {
 //                            break;
 
                         case 1:
-                            hocKy.setMoTa(currentCell.getStringCellValue());
+                            monHoc.setMoTa(currentCell.getStringCellValue());
                             break;
 
                         case 2:
-                            hocKy.setNamBatDau((int) currentCell.getNumericCellValue());
-                            break;
-
-                        case 3:
-                            hocKy.setNamKetThuc((int) currentCell.getNumericCellValue());
-                            break;
-
-                        case 4:
-                            hocKy.setThuTuHocKy((int) currentCell.getNumericCellValue());
+                            monHoc.setTenMonHoc(currentCell.getStringCellValue());
                             break;
 
                         default:
@@ -85,7 +74,7 @@ public class ExcelHelper {
                     cellIdx++;
                 }
 
-                tutorials.add(hocKy);
+                tutorials.add(monHoc);
             }
 
             workbook.close();
