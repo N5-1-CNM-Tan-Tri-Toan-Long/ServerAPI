@@ -45,9 +45,14 @@ public class HocPhanController {
         hocPhanService.deleteHocPhanById(id);
     }
 
+    //find mã học kỳ ra học phần
+    @GetMapping("/{maHK}/mahk")
+    public List<HocPhan> getHocPhanById(@PathVariable("maHK") long maHK){
+        return hocPhanService.findHPByMaHK(maHK);
+    }
+
     @PostMapping("/upload")
     public void  uploadFile(@RequestParam("file") MultipartFile file) {
                 hocPhanService.saveHocPhanByFile(file);
     }
 }
-

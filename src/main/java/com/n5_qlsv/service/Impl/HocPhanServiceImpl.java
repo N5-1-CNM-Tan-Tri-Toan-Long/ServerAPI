@@ -64,6 +64,11 @@ public class HocPhanServiceImpl implements HocPhanService {
     }
 
     @Override
+    public List<HocPhan> findHPByMaHK(long maHK) {
+        return hocPhanRepository.findHPByMaHK(maHK);
+    }
+
+    @Override
     public void saveHocPhanByFile(MultipartFile file) {
         try {
             List<HocPhan> hocPhanList = ExcelHelperHocPhan.excelToTutorials(file.getInputStream());

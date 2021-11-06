@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class KetQuaHTServiceImpl implements KetQuaHTService {
@@ -51,5 +52,10 @@ public class KetQuaHTServiceImpl implements KetQuaHTService {
     @Override
     public List<KetQuaHocTap> findKQHTByMaSV(String maSV) {
         return ketQuaHocTapRepository.findKQHTByMaSV(maSV);
+    }
+
+    @Override
+    public Set<Long> findMaHKByMaSV(String maSV) {
+        return ketQuaHocTapRepository.findMaHKByMaSV(maSV);
     }
 }

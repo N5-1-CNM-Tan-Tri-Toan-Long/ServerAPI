@@ -11,4 +11,7 @@ import java.util.List;
 
 @Repository
 public interface HocPhanRepository extends JpaRepository<HocPhan, String> {
+
+    @Query(value = " SELECT * FROM hotrosinhvien.tbl_hocphan h join tbl_lophocphan l on l.ma_hp = h.ma_hp where ma_hk = ?1", nativeQuery = true)
+    List<HocPhan> findHPByMaHK(long maHK);
 }

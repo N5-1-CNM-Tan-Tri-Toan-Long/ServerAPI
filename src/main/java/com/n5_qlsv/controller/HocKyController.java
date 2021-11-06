@@ -1,7 +1,7 @@
 package com.n5_qlsv.controller;
 
 import com.n5_qlsv.entity.HocKy;
-import com.n5_qlsv.helper.ExcelHelper;
+import com.n5_qlsv.helper.ExcelHelperHocKy;
 import com.n5_qlsv.message.ResponseMessage;
 import com.n5_qlsv.service.HocKyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +49,7 @@ public class HocKyController {
     public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
         String message = "";
 
-        if (ExcelHelper.hasExcelFormat(file)) {
+        if (ExcelHelperHocKy.hasExcelFormat(file)) {
             try {
                 hocKyService.saveHocKyByFile(file);
 

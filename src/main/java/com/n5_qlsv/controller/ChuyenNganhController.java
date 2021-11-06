@@ -4,6 +4,7 @@ import com.n5_qlsv.entity.ChuyenNganh;
 import com.n5_qlsv.service.ChuyenNganhService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -40,4 +41,8 @@ public class ChuyenNganhController {
         chuyenNganhService.deleteChuyenNganhById(id);
     }
 
+    @PostMapping("/upload")
+    public void uploadFile(@RequestParam("file") MultipartFile file) {
+        chuyenNganhService.saveChuyenNganhByFile(file);
+    }
 }

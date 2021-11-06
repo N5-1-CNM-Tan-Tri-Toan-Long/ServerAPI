@@ -1,7 +1,7 @@
 package com.n5_qlsv.service.Impl;
 
 import com.n5_qlsv.entity.HocKy;
-import com.n5_qlsv.helper.ExcelHelper;
+import com.n5_qlsv.helper.ExcelHelperHocKy;
 import com.n5_qlsv.repository.HocKyRepository;
 import com.n5_qlsv.service.HocKyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +54,7 @@ public class HocKyServiceImpl implements HocKyService {
     @Override
     public void saveHocKyByFile(MultipartFile file) {
         try {
-            List<HocKy> hocKyList = ExcelHelper.excelToTutorials(file.getInputStream());
+            List<HocKy> hocKyList = ExcelHelperHocKy.excelToTutorials(file.getInputStream());
             hocKyRepository.saveAll(hocKyList);
         } catch (IOException e) {
             throw new RuntimeException("fail to store excel data: " + e.getMessage());
