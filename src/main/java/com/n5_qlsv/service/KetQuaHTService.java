@@ -15,4 +15,5 @@ public interface KetQuaHTService {
     KetQuaHocTap updateKQHTById(Long maKQHT, KetQuaHocTap ketQuaHocTap);
     List<KetQuaHocTap> findKQHTByMaSV(String maSV);
     Set<Long> findMaHKByMaSV(String maSV);
+    KetQuaHocTap findKQHTByMaSVAndMaLHP(String maSV, Long maLHP);
 }
