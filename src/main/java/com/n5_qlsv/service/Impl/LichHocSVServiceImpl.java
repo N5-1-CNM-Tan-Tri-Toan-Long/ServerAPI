@@ -53,4 +53,9 @@ public class LichHocSVServiceImpl implements LichHocSVService {
     public List<LichHocSinhVien> findByMaSV(String maSV) {
         return lichHocSVRepository.findByMaSV(maSV);
     }
+
+    @Override
+    public List<LichHocSinhVien> findLHPDaDK(String maSV, Long maHK) {
+        return lichHocSVRepository.findLHPDaDK(maSV, maHK);
+    }
 }
