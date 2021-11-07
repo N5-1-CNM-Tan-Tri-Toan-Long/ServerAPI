@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Data
@@ -27,4 +28,7 @@ public class LichHocSinhVien {
     @ManyToOne
     @JoinColumn(name = "ma_sv")
     private SinhVien sinhVien;
+
+    @Column(name = "ngay_dang_ky_hoc_phan")
+    private Date ngayDangKyHP;
 }
