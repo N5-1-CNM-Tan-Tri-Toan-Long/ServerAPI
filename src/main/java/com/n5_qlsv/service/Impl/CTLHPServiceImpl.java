@@ -47,4 +47,9 @@ public class CTLHPServiceImpl implements CTLHPService {
         chiTietLopHocPhan.setMaCTLHP(maCTLHP);
         return ctlhpRepository.save(chiTietLopHocPhan);
     }
+
+    @Override
+    public List<ChiTietLopHocPhan> findByMaLHP(long id) {
+        return ctlhpRepository.findByMaLopHocPhan(id);
+    }
 }

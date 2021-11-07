@@ -29,4 +29,9 @@ public class CTLHPController {
     public void deleteCTLHPById(@PathVariable("id") Long maCTLHP){
         ctlhpService.deleteChiTietLHPById(maCTLHP);
     }
+
+    @GetMapping("/malophocphan/{maLHP}")
+    private List<ChiTietLopHocPhan> findByMaLHP(@PathVariable("maLHP") long maLHP){
+        return ctlhpService.findByMaLHP(maLHP);
+    };
 }
