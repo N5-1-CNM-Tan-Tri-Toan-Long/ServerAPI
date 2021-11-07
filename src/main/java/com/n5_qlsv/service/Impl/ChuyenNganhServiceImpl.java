@@ -54,6 +54,16 @@ public class ChuyenNganhServiceImpl implements ChuyenNganhService {
     }
 
     @Override
+    public List<ChuyenNganh> findAllByKhoa(Long maKhoa, int page, int size) {
+        Pageable pageable;
+        if(page < 0 || size <= 0)
+            pageable = Pageable.unpaged();
+        else
+            pageable = PageRequest.of(page, size);
+        return chuyenNganhRepository.findAllByKhoa(maKhoa, pageable);
+    }
+
+    @Override
     public void saveChuyenNganhByFile(MultipartFile file) {
         try {
             List<ChuyenNganh> sinhVienList = ExcelHelperChuyenNganh.excelToTutorials(file.getInputStream());
