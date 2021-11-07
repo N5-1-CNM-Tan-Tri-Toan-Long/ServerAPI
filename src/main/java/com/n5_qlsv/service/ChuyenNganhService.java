@@ -11,5 +11,6 @@ public interface ChuyenNganhService {
     List<ChuyenNganh> findAllChuyenNganh(int page, int size);
     void deleteChuyenNganhById(Long maChuyenNganh);
     ChuyenNganh updateChuyenNganhById(Long maChuyenNganh, ChuyenNganh chuyenNganh);
+    List<ChuyenNganh> findAllByKhoa(Long maKhoa, int page, int size);
     void saveChuyenNganhByFile(MultipartFile file);
 }
