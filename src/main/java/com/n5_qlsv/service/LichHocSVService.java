@@ -14,4 +14,5 @@ public interface LichHocSVService {
     void deleteLichHocSinhVienById(Long maLHSV);
     LichHocSinhVien updateLichHocSinhVienById(Long maLHSV, LichHocSinhVien lichHocSinhVien);
     List<LichHocSinhVien> findByMaSV(String maSV);
+    List<LichHocSinhVien> findLHPDaDK(String maSV, Long maHK);
 }

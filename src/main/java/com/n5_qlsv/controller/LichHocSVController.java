@@ -43,4 +43,9 @@ public class LichHocSVController {
     public void deleteLichHocSVById(@PathVariable("id") Long maLHSV){
         lichHocSVService.deleteLichHocSinhVienById(maLHSV);
     }
+
+    @GetMapping("/{maSV}/masv/{mahK}/mahk")
+    public void findLHPDaDK(@PathVariable("maSV") String maSV, @PathVariable("mahK") Long maHK){
+        lichHocSVService.findLHPDaDK(maSV, maHK);
+    }
 }
