@@ -58,4 +58,9 @@ public class KetQuaHTServiceImpl implements KetQuaHTService {
     public Set<Long> findMaHKByMaSV(String maSV) {
         return ketQuaHocTapRepository.findMaHKByMaSV(maSV);
     }
+
+    @Override
+    public KetQuaHocTap findKQHTByMaSVAndMaLHP(String maSV, Long maLHP) {
+        return ketQuaHocTapRepository.findKQHTByMaSVAndMaLHP(maSV, maLHP);
+    }
 }

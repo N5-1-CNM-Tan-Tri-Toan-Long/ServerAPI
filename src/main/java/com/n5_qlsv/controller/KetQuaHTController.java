@@ -48,4 +48,9 @@ public class KetQuaHTController {
     public void deleteKQHT(@PathVariable("maKQHT") Long maKQHT){
         ketQuaHTService.deleteKQHTById(maKQHT);
     }
+
+    @GetMapping("/{maSV}/{maLHP}/kq")
+    public KetQuaHocTap findKQHTByMaSVAndMaLHP(@PathVariable("maSV") String maSV, @PathVariable("maLHP") Long maLHP){
+        return ketQuaHTService.findKQHTByMaSVAndMaLHP(maSV, maLHP);
+    }
 }
