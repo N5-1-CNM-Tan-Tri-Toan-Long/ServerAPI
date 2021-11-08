@@ -4,6 +4,7 @@ import com.n5_qlsv.entity.KetQuaHocTap;
 import com.n5_qlsv.service.KetQuaHTService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Set;
@@ -52,5 +53,10 @@ public class KetQuaHTController {
     @GetMapping("/{maSV}/{maLHP}/kq")
     public KetQuaHocTap findKQHTByMaSVAndMaLHP(@PathVariable("maSV") String maSV, @PathVariable("maLHP") Long maLHP){
         return ketQuaHTService.findKQHTByMaSVAndMaLHP(maSV, maLHP);
+    }
+
+    @PostMapping("/upload")
+    public void  uploadFile(@RequestParam("file") MultipartFile file) {
+        ketQuaHTService.saveKetQuaHocTapByFile(file);
     }
 }

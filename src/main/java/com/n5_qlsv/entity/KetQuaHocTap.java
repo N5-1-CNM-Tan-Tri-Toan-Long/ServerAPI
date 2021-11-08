@@ -35,28 +35,31 @@ public class KetQuaHocTap implements Serializable {
     private String diemChu;
 
     @Column(name = "diem_tk1")
-    private double diemTK1;
+    private Double diemTK1;
 
     @Column(name = "diem_tk2")
-    private double diemTK2;
+    private Double diemTK2;
 
     @Column(name = "diem_tk3")
-    private double diemTK3;
+    private Double diemTK3;
 
-    @Column(name = "diem_th")
-    private double diemTH;
+    @Column(name = "diem_th1")
+    private Double diemTH1;
+
+    @Column(name = "diem_th2")
+    private Double diemTH2;
 
     @Column(name = "diem_he4")
-    private double diemHe4;
+    private Double diemHe4;
 
     @Column(name = "diem_he10")
-    private double diemHe10;
+    private Double diemHe10;
 
     @Column(name = "diem_gk")
-    private double diemGK;
+    private Double diemGK;
 
     @Column(name = "diem_ck")
-    private double diemCK;
+    private Double diemCK;
 
     @ManyToOne
     @JoinColumn(name = "ma_lhp")

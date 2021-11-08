@@ -3,6 +3,7 @@ package com.n5_qlsv.service;
 
 
 import com.n5_qlsv.entity.KetQuaHocTap;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Set;
@@ -16,4 +17,6 @@ public interface KetQuaHTService {
     List<KetQuaHocTap> findKQHTByMaSV(String maSV);
     Set<Long> findMaHKByMaSV(String maSV);
     KetQuaHocTap findKQHTByMaSVAndMaLHP(String maSV, Long maLHP);
+    void saveKetQuaHocTapByFile(MultipartFile file);
+
 }
