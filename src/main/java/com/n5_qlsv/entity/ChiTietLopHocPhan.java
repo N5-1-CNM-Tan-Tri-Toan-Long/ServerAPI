@@ -47,6 +47,9 @@ public class ChiTietLopHocPhan implements Serializable {
     @Column(name = "tiet_hoc")
     private String tietHoc;
 
+    @Column(name = "nhom_thuc_hanh")
+    private int nhomTH;
+
     @ManyToOne
     @JoinColumn(name = "ma_gv")
     private GiangVien giangVien;
