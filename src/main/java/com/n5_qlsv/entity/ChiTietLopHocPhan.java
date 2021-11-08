@@ -48,7 +48,7 @@ public class ChiTietLopHocPhan implements Serializable {
     private String tietHoc;
 
     @Column(name = "nhom_thuc_hanh")
-    private int nhomTH;
+    private Integer nhomTH;
 
     @ManyToOne
     @JoinColumn(name = "ma_gv")
