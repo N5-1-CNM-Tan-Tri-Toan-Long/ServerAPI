@@ -1,6 +1,7 @@
 package com.n5_qlsv.repository;
 
 import com.n5_qlsv.entity.KetQuaHocTap;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -17,4 +18,6 @@ public interface KetQuaHocTapRepository extends JpaRepository<KetQuaHocTap, Long
     Set<Long> findMaHKByMaSV(String maSV);
     @Query(value = "SELECT * FROM tbl_kqht where ma_lhp = ?2 and ma_sv = ?1", nativeQuery = true)
     KetQuaHocTap findKQHTByMaSVAndMaLHP(String maSV, Long maLHP);
+    @Query("select kq from KetQuaHocTap kq where kq.sinhVien.maSV = ?1")
+    List<KetQuaHocTap> findKQHTByMaSVWithPageSize(String maSV, Pageable pageable);
 }
