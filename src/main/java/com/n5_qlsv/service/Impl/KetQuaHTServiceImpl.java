@@ -137,12 +137,103 @@ public class KetQuaHTServiceImpl implements KetQuaHTService {
     @Override
     public KetQuaHocTap updateKQHTById(Long maKQHT, KetQuaHocTap ketQuaHocTap) {
         ketQuaHocTap.setMaKQHT(maKQHT);
+        LopHocPhan lopHocPhan = lopHocPhanService.findLopHocPhanById(ketQuaHocTap.getLopHocPhan().getMaLHP());
+        Double tk;
+        if (ketQuaHocTap.getDiemTK1() != null){
+            if(ketQuaHocTap.getDiemTK2() != null && ketQuaHocTap.getDiemTK3() != null){
+                tk = ((ketQuaHocTap.getDiemTK1() + ketQuaHocTap.getDiemTK2() + ketQuaHocTap.getDiemTK3()))/3;
+            }else if(ketQuaHocTap.getDiemTK2() != null && ketQuaHocTap.getDiemTK3() == null){
+                tk = ((ketQuaHocTap.getDiemTK1() + ketQuaHocTap.getDiemTK2()))/2;
+            }else {
+                tk = ketQuaHocTap.getDiemTK1();
+            }
+        }else {
+            tk = null;
+        }
+        double gk = ketQuaHocTap.getDiemGK();
+        ketQuaHocTap.setDiemGK(Math.ceil(gk * 10) / 10);
+        double ck = ketQuaHocTap.getDiemCK();
+        ketQuaHocTap.setDiemCK(Math.ceil(ck * 10) / 10);
+        double diemHe10 = ((tk*20) + (gk * 30) + (ck* 50 ))/100;
+        int soTCLT = lopHocPhan.getHocPhan().getSoTCLT();
+        int soTCTH = lopHocPhan.getHocPhan().getSoTCTH();
+        int soTC = lopHocPhan.getHocPhan().getSoTCLT() + lopHocPhan.getHocPhan().getSoTCTH();
+        double diemTongKet = 0;
+        if(ketQuaHocTap.getDiemTH1() == null && ketQuaHocTap.getDiemTH2() == null){ // mon có thực hành
+            diemTongKet = Math.ceil(diemHe10 * 10) / 10;
+            ketQuaHocTap.setDiemHe10(diemTongKet);
+        }else {
+            if(ketQuaHocTap.getDiemTK1() != null){
+                if(ketQuaHocTap.getDiemTH2() == null){
+                    double diemMonTH = ((diemHe10 * soTCLT) + (ketQuaHocTap.getDiemTH1() * soTCTH)) / soTC;
+                    diemTongKet = Math.ceil(diemMonTH * 100) / 100;
+                    ketQuaHocTap.setDiemHe10(diemTongKet);
+                }else {
+                    double diemTBTH = ((ketQuaHocTap.getDiemTH1() + ketQuaHocTap.getDiemTH2()))/2;
+                    double diemMonTH = ((diemHe10 * soTCLT) + (diemTBTH * soTCTH)) / soTC;
+                    diemTongKet = Math.ceil(diemMonTH * 10) / 10;
+                    ketQuaHocTap.setDiemHe10(diemTongKet);
+                }
+            }
+
+        }
+
+        //điểm hệ số 4
+        if(diemTongKet >= 9){
+            ketQuaHocTap.setDiemHe4(4.0);
+            ketQuaHocTap.setDiemChu("A+");
+            ketQuaHocTap.setXepLoai("Xuất sắc");
+        }else if(diemTongKet > 8.4 && diemTongKet <= 8.9){
+            ketQuaHocTap.setDiemHe4(3.8);
+            ketQuaHocTap.setDiemChu("A");
+            ketQuaHocTap.setXepLoai("Giỏi");
+        }else if(diemTongKet > 7.9 && diemTongKet <= 8.4){
+            ketQuaHocTap.setDiemHe4(3.5);
+            ketQuaHocTap.setDiemChu("B+");
+            ketQuaHocTap.setXepLoai("Khá");
+        }else if(diemTongKet > 6.9 && diemTongKet <= 7.9){
+            ketQuaHocTap.setDiemHe4(3.0);
+            ketQuaHocTap.setDiemChu("B");
+            ketQuaHocTap.setXepLoai("Khá");
+        }else if(diemTongKet > 5.9 && diemTongKet <= 6.9){
+            ketQuaHocTap.setDiemHe4(2.5);
+            ketQuaHocTap.setDiemChu("C+");
+            ketQuaHocTap.setXepLoai("Trung Bình");
+        }else if(diemTongKet > 5.4 && diemTongKet <= 5.9){
+            ketQuaHocTap.setDiemHe4(2.0);
+            ketQuaHocTap.setDiemChu("C");
+            ketQuaHocTap.setXepLoai("Trung Bình");
+        }else if(diemTongKet > 4.9 && diemTongKet <= 5.4){
+            ketQuaHocTap.setDiemHe4(1.5);
+            ketQuaHocTap.setDiemChu("D+");
+            ketQuaHocTap.setXepLoai("Trung Bình Yếu");
+        }
+        else if(diemTongKet > 3.9 && diemTongKet <= 4.9){
+            ketQuaHocTap.setDiemHe4(1.0);
+            ketQuaHocTap.setDiemChu("D");
+            ketQuaHocTap.setXepLoai("Trung Bình Yếu");
+        }else {
+            ketQuaHocTap.setDiemHe4(0.0);
+            ketQuaHocTap.setDiemChu("F");
+            ketQuaHocTap.setXepLoai("Kém");
+            ketQuaHocTap.setMoTa("Học lại");
+        }
         return ketQuaHocTapRepository.save(ketQuaHocTap);
     }
 
     @Override
     public List<KetQuaHocTap> findKQHTByMaSV(String maSV) {
         return ketQuaHocTapRepository.findKQHTByMaSV(maSV);
+    }
+
+    @Override
+    public List<KetQuaHocTap> findKQHTByMaSVWithPageSize(String maSV, int page, int size) {
+        Pageable pageable;
+        if(page < 0 || size <= 0)
+            pageable = Pageable.unpaged();
+        else
+            pageable = PageRequest.of(page,size);
+        return ketQuaHocTapRepository.findKQHTByMaSVWithPageSize(maSV, pageable);
     }
 
     @Override
@@ -159,7 +250,10 @@ public class KetQuaHTServiceImpl implements KetQuaHTService {
     public void saveKetQuaHocTapByFile(MultipartFile file) {
         try {
             List<KetQuaHocTap> ketQuaHocTaps = ExcelHelperKetQuaHocTap.excelToKetQuaHocTap(file.getInputStream());
-            ketQuaHocTapRepository.saveAll(ketQuaHocTaps);
+            for (KetQuaHocTap ketQuaHocTap: ketQuaHocTaps) {
+                saveKQHT(ketQuaHocTap);
+            }
+//            ketQuaHocTapRepository.saveAll(ketQuaHocTaps);
         } catch (IOException e) {
             throw new RuntimeException("fail to store excel data: " + e.getMessage());
         }

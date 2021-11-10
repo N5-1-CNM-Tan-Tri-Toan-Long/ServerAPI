@@ -3,11 +3,13 @@ package com.n5_qlsv.helper;
 import com.n5_qlsv.entity.KetQuaHocTap;
 import com.n5_qlsv.entity.LopHocPhan;
 import com.n5_qlsv.entity.SinhVien;
+import com.n5_qlsv.service.LopHocPhanService;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -19,6 +21,9 @@ import java.util.List;
 public class ExcelHelperKetQuaHocTap {
     public static String TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
     static String SHEET = "KetQuaHocTap";
+
+    @Autowired
+    private static LopHocPhanService lopHocPhanService;
 
     public static boolean hasExcelFormat(MultipartFile file) {
 
@@ -46,53 +51,37 @@ public class ExcelHelperKetQuaHocTap {
                 }
 
                 Iterator<Cell> cellsInRow = currentRow.iterator();
-
                 KetQuaHocTap ketQuaHocTap = new KetQuaHocTap();
                 int cellIdx = 0;
                 while (cellsInRow.hasNext()){
                     Cell currentCell = cellsInRow.next();
 
                     switch (cellIdx){
-                        case 1:
+                        case 0:
                             ketQuaHocTap.setDiemCK(currentCell.getNumericCellValue());
                             break;
-                        case 2:
-                            ketQuaHocTap.setDiemChu(currentCell.getStringCellValue());
-                            break;
-                        case 3:
+                        case 1:
                             ketQuaHocTap.setDiemGK(currentCell.getNumericCellValue());
                             break;
-                        case 4:
-                            ketQuaHocTap.setDiemHe10(currentCell.getNumericCellValue());
-                            break;
-                        case 5:
-                            ketQuaHocTap.setDiemHe4(currentCell.getNumericCellValue());
-                            break;
-                        case 6:
+                        case 2:
                             ketQuaHocTap.setDiemTH1(currentCell.getNumericCellValue());
                             break;
-                        case 7:
+                        case 3:
                             ketQuaHocTap.setDiemTH2(currentCell.getNumericCellValue());
                             break;
-                        case 8:
+                        case 4:
                             ketQuaHocTap.setDiemTK1(currentCell.getNumericCellValue());
                             break;
-                        case 9:
+                        case 5:
                             ketQuaHocTap.setDiemTK2(currentCell.getNumericCellValue());
                             break;
-                        case 10:
+                        case 6:
                             ketQuaHocTap.setDiemTK3(currentCell.getNumericCellValue());
                             break;
-                        case 11:
-                            ketQuaHocTap.setMoTa(currentCell.getStringCellValue());
-                            break;
-                        case 12:
-                            ketQuaHocTap.setXepLoai(currentCell.getStringCellValue());
-                            break;
-                        case 13:
+                        case 7:
                             ketQuaHocTap.setLopHocPhan(new LopHocPhan().builder().maLHP((long)currentCell.getNumericCellValue()).build());
                             break;
-                        case 14:
+                        case 8:
                             ketQuaHocTap.setSinhVien(new SinhVien().builder().maSV(currentCell.getStringCellValue()).build());
                             break;
                         default:

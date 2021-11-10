@@ -15,8 +15,8 @@ public interface KetQuaHTService {
     void deleteKQHTById(Long maKQHT);
     KetQuaHocTap updateKQHTById(Long maKQHT, KetQuaHocTap ketQuaHocTap);
     List<KetQuaHocTap> findKQHTByMaSV(String maSV);
+    List<KetQuaHocTap> findKQHTByMaSVWithPageSize(String maSV, int page, int size);
     Set<Long> findMaHKByMaSV(String maSV);
     KetQuaHocTap findKQHTByMaSVAndMaLHP(String maSV, Long maLHP);
     void saveKetQuaHocTapByFile(MultipartFile file);
-
 }

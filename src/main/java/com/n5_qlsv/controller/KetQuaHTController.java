@@ -41,6 +41,13 @@ public class KetQuaHTController {
         return ketQuaHTService.findKQHTByMaSV(maSV);
     }
 
+    @GetMapping("/maSV={maSV}")
+    public List<KetQuaHocTap> findKQHTByMaSVWithPageSize(@PathVariable("maSV") String maSV,
+                                                         @RequestParam(defaultValue = "0") int page,
+                                                         @RequestParam (defaultValue = "0") int size){
+        return ketQuaHTService.findKQHTByMaSVWithPageSize(maSV, page, size);
+    }
+
     @GetMapping("/{maSV}/hk")
     public Set<Long> findMaHKByMaSV(@PathVariable("maSV") String maSV){
         return ketQuaHTService.findMaHKByMaSV(maSV);
