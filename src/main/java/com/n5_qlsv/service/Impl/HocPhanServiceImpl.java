@@ -49,10 +49,11 @@ public class HocPhanServiceImpl implements HocPhanService {
 
     @Override
     public void deleteHocPhanById(String maHP) {
-        HocPhan hocPhan = hocPhanRepository.findById(maHP).get();
-        MonHoc monHoc = monHocRepository.findById(hocPhan.getMonHoc().getMaMonHoc()).get();
-        monHoc.setHocPhan(null);
-        monHocRepository.save(monHoc);
+        //Delete theo OneToOne
+//        HocPhan hocPhan = hocPhanRepository.findById(maHP).get();
+//        MonHoc monHoc = monHocRepository.findById(hocPhan.getMonHoc().getMaMonHoc()).get();
+//        monHoc.setHocPhan(null);
+//        monHocRepository.save(monHoc);
         hocPhanRepository.deleteById(maHP);
     }
 
