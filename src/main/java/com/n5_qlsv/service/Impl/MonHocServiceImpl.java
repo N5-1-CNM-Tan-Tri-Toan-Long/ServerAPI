@@ -69,4 +69,14 @@ public class MonHocServiceImpl implements MonHocService {
             throw new RuntimeException("fail to store excel data: " + e.getMessage());
         }
     }
+
+    @Override
+    public List<MonHoc> findAllByKhoa(Long maKhoa, int page, int size) {
+        Pageable pageable;
+        if(page < 0 || size <= 0)
+            pageable = Pageable.unpaged();
+        else
+            pageable = PageRequest.of(page, size);
+        return monHocRepository.findAllByKhoa(maKhoa, pageable);
+    }
 }

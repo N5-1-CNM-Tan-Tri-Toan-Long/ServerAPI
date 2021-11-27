@@ -13,4 +13,5 @@ public interface MonHocService {
     MonHoc updateMonHocById(Long maMonHoc, MonHoc monHoc);
     List<MonHoc> findMonHocNotInHocPhan();
     void saveMonHocByFile(MultipartFile file);
+    List<MonHoc> findAllByKhoa(Long maKhoa, int page, int size);
 }

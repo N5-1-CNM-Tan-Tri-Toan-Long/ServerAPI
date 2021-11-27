@@ -50,4 +50,11 @@ public class MonHocController {
     public void  uploadFile(@RequestParam("file") MultipartFile file) {
         monHocService.saveMonHocByFile(file);
     }
+
+    @GetMapping("/khoa={maKhoa}")
+    public List<MonHoc> findAllByKhoa(@PathVariable(value = "maKhoa") Long maKhoa,
+                                           @RequestParam(defaultValue = "0") int page,
+                                           @RequestParam(defaultValue = "0") int size) {
+        return monHocService.findAllByKhoa(maKhoa, page, size);
+    }
 }
