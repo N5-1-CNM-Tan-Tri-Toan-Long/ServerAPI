@@ -1,5 +1,6 @@
 package com.n5_qlsv.helper;
 
+import com.n5_qlsv.entity.Khoa;
 import com.n5_qlsv.entity.MonHoc;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -65,6 +66,10 @@ public class ExcelHelperMonHoc {
 
                         case 2:
                             monHoc.setTenMonHoc(currentCell.getStringCellValue());
+                            break;
+
+                        case 3:
+                            monHoc.setKhoa(new Khoa().builder().maKhoa((long) currentCell.getNumericCellValue()).build());
                             break;
 
                         default:

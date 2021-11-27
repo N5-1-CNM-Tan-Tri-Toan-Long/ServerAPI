@@ -31,6 +31,10 @@ public class MonHoc {
     @Type(type = "org.hibernate.type.StringNVarcharType")
     private String moTa;
 
+    @ManyToOne
+    @JoinColumn(name = "ma_khoa")
+    private Khoa khoa;
+
     @JsonIgnore
     @OneToOne(mappedBy = "monHoc",
             cascade = CascadeType.ALL,

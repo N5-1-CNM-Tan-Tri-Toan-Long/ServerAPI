@@ -42,4 +42,8 @@ public class Khoa {
     @JsonIgnore
     @OneToMany(mappedBy = "khoa")
     private List<ChuyenNganh> chuyenNganhList;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "khoa")
+    private List<MonHoc> monHocList;
 }
