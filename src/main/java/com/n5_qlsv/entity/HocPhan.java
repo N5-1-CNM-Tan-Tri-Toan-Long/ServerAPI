@@ -33,7 +33,11 @@ public class HocPhan {
     @Column(name = "so_tc_th")
     private int soTCTH;
 
-    @OneToOne
+//    @OneToOne
+//    @JoinColumn(name = "ma_mh")
+//    private MonHoc monHoc;
+
+    @ManyToOne
     @JoinColumn(name = "ma_mh")
     private MonHoc monHoc;
 

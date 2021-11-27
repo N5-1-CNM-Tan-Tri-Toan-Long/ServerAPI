@@ -36,8 +36,6 @@ public class MonHoc {
     private Khoa khoa;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "monHoc",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
-    private HocPhan hocPhan;
+    @OneToMany(mappedBy = "monHoc", cascade = CascadeType.ALL)
+    private List<HocPhan> hocPhanList;
 }
