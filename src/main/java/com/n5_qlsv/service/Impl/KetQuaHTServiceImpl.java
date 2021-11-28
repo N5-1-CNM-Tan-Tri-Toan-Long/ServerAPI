@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Set;
 
@@ -35,7 +36,7 @@ public class KetQuaHTServiceImpl implements KetQuaHTService {
         if (ketQuaHocTap.getDiemTK1() != null){
             if(ketQuaHocTap.getDiemTK2() != null && ketQuaHocTap.getDiemTK3() != null){
                 tk = ((ketQuaHocTap.getDiemTK1() + ketQuaHocTap.getDiemTK2() + ketQuaHocTap.getDiemTK3()))/3;
-            }else if(ketQuaHocTap.getDiemTK2() != null && ketQuaHocTap.getDiemTK3() == null){
+            }else if(ketQuaHocTap.getDiemTK2() != null){
                 tk = ((ketQuaHocTap.getDiemTK1() + ketQuaHocTap.getDiemTK2()))/2;
             }else {
                 tk = ketQuaHocTap.getDiemTK1();
@@ -44,27 +45,27 @@ public class KetQuaHTServiceImpl implements KetQuaHTService {
             tk = null;
         }
         double gk = ketQuaHocTap.getDiemGK();
-        ketQuaHocTap.setDiemGK(Math.ceil(gk * 10) / 10);
+        ketQuaHocTap.setDiemGK((double)Math.round(gk * 10) / 10);
         double ck = ketQuaHocTap.getDiemCK();
-        ketQuaHocTap.setDiemCK(Math.ceil(ck * 10) / 10);
+        ketQuaHocTap.setDiemCK((double)Math.round(ck * 10) / 10);
         double diemHe10 = ((tk*20) + (gk * 30) + (ck* 50 ))/100;
         int soTCLT = lopHocPhan.getHocPhan().getSoTCLT();
         int soTCTH = lopHocPhan.getHocPhan().getSoTCTH();
         int soTC = lopHocPhan.getHocPhan().getSoTCLT() + lopHocPhan.getHocPhan().getSoTCTH();
         double diemTongKet = 0;
         if(ketQuaHocTap.getDiemTH1() == null && ketQuaHocTap.getDiemTH2() == null){ // mon có thực hành
-            diemTongKet = Math.ceil(diemHe10 * 10) / 10;
+            diemTongKet = (double) Math.round(diemHe10 * 10) / 10;
             ketQuaHocTap.setDiemHe10(diemTongKet);
         }else {
-            if(ketQuaHocTap.getDiemTK1() != null){
+            if(ketQuaHocTap.getDiemTH1() != null){
                 if(ketQuaHocTap.getDiemTH2() == null){
                     double diemMonTH = ((diemHe10 * soTCLT) + (ketQuaHocTap.getDiemTH1() * soTCTH)) / soTC;
-                    diemTongKet = Math.ceil(diemMonTH * 100) / 100;
+                    diemTongKet = (double) Math.round(diemMonTH * 10) / 10;
                     ketQuaHocTap.setDiemHe10(diemTongKet);
                 }else {
                     double diemTBTH = ((ketQuaHocTap.getDiemTH1() + ketQuaHocTap.getDiemTH2()))/2;
                     double diemMonTH = ((diemHe10 * soTCLT) + (diemTBTH * soTCTH)) / soTC;
-                    diemTongKet = Math.ceil(diemMonTH * 10) / 10;
+                    diemTongKet = (double) Math.round(diemMonTH * 10) / 10;
                     ketQuaHocTap.setDiemHe10(diemTongKet);
                 }
             }
