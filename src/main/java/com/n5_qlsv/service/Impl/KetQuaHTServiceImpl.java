@@ -48,30 +48,31 @@ public class KetQuaHTServiceImpl implements KetQuaHTService {
         ketQuaHocTap.setDiemGK((double)Math.round(gk * 10) / 10);
         double ck = ketQuaHocTap.getDiemCK();
         ketQuaHocTap.setDiemCK((double)Math.round(ck * 10) / 10);
-        double diemHe10 = ((tk*20) + (gk * 30) + (ck* 50 ))/100;
+        double diemHe10 = ((tk*20) + (gk * 30) + (ck* 50 )) / 100;
         int soTCLT = lopHocPhan.getHocPhan().getSoTCLT();
         int soTCTH = lopHocPhan.getHocPhan().getSoTCTH();
         int soTC = lopHocPhan.getHocPhan().getSoTCLT() + lopHocPhan.getHocPhan().getSoTCTH();
         double diemTongKet = 0;
-        if(ketQuaHocTap.getDiemTH1() == null && ketQuaHocTap.getDiemTH2() == null){ // mon có thực hành
-            diemTongKet = (double) Math.round(diemHe10 * 10) / 10;
+        if(ketQuaHocTap.getDiemTH1() == null && ketQuaHocTap.getDiemTH2() == null){ // môn không có thực hành
+            double diemHe10LT = (double) Math.round(diemHe10 * 100) / 100;
+            diemTongKet = (double) Math.round(diemHe10LT * 10) / 10;
             ketQuaHocTap.setDiemHe10(diemTongKet);
         }else {
             if(ketQuaHocTap.getDiemTH1() != null){
                 if(ketQuaHocTap.getDiemTH2() == null){
                     double diemMonTH = ((diemHe10 * soTCLT) + (ketQuaHocTap.getDiemTH1() * soTCTH)) / soTC;
-                    diemTongKet = (double) Math.round(diemMonTH * 10) / 10;
+                    double diemMotMonTH = (double) Math.round(diemMonTH * 100) / 100;
+                    diemTongKet = (double) Math.round(diemMotMonTH * 10) / 10;
                     ketQuaHocTap.setDiemHe10(diemTongKet);
                 }else {
                     double diemTBTH = ((ketQuaHocTap.getDiemTH1() + ketQuaHocTap.getDiemTH2()))/2;
                     double diemMonTH = ((diemHe10 * soTCLT) + (diemTBTH * soTCTH)) / soTC;
-                    diemTongKet = (double) Math.round(diemMonTH * 10) / 10;
+                    double diemHaiMonTH = (double) Math.round(diemMonTH * 100) / 100;
+                    diemTongKet = (double) Math.round(diemHaiMonTH * 10) / 10;
                     ketQuaHocTap.setDiemHe10(diemTongKet);
                 }
             }
-
         }
-        
         //điểm hệ số 4
         if(diemTongKet >= 9){
             ketQuaHocTap.setDiemHe4(4.0);
