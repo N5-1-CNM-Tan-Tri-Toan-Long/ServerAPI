@@ -48,4 +48,8 @@ public class HocPhan {
     @JsonIgnore
     @OneToMany(mappedBy = "hocPhan", cascade = CascadeType.ALL)
     private List<LopHocPhan> lopHocPhanList;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "hocPhan", cascade = CascadeType.ALL)
+    private List<HocPhanKhung> hocPhanKhungList;
 }

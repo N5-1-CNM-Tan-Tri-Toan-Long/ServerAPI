@@ -2,7 +2,6 @@ package com.n5_qlsv.service.Impl;
 
 
 import com.n5_qlsv.entity.HocPhan;
-import com.n5_qlsv.entity.MonHoc;
 import com.n5_qlsv.helper.ExcelHelperHocPhan;
 import com.n5_qlsv.repository.HocPhanRepository;
 import com.n5_qlsv.repository.MonHocRepository;
@@ -21,9 +20,6 @@ public class HocPhanServiceImpl implements HocPhanService {
 
     @Autowired
     private HocPhanRepository hocPhanRepository;
-
-    @Autowired
-    private MonHocRepository monHocRepository;
 
     @Override
     public HocPhan saveHocPhan(HocPhan hocPhan) {
