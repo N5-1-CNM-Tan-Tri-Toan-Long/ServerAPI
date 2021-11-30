@@ -62,4 +62,9 @@ public class HocPhanKhungServiceImpl implements HocPhanKhungService {
         }
 
     }
+
+    @Override
+    public List<HocPhanKhung> findAllByChuyenNganhAndHocKi(long maCN, int tthk) {
+        return repository.findAllByChuyenNganhAndHocKi(maCN, tthk);
+    }
 }

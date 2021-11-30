@@ -21,6 +21,12 @@ public class HocPhanKhungController {
         return service.findAllHPK(page, size);
     }
 
+    @GetMapping("/chuyenNganh/{maCN}/thuTuHocKi/{tthk}")
+    public List<HocPhanKhung> findAllByChuyenNganhAndHocKi(@PathVariable long maCN
+            , @PathVariable int tthk) {
+        return service.findAllByChuyenNganhAndHocKi(maCN, tthk);
+    }
+
     @GetMapping("/{id}")
     public HocPhanKhung getById(@PathVariable("id") Long id) {
         return service.findHPKById(id);
