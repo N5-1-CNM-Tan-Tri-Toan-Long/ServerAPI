@@ -15,5 +15,5 @@ public interface HocPhanKhungRepository extends JpaRepository<HocPhanKhung, Long
             "join hotrosinhvien.tbl_hocphan hp on hp.ma_hp = hpk.ma_hp " +
             "join hotrosinhvien.tbl_monhoc mh on mh.ma_mh = hp.ma_mh " +
             "where hp.ma_chuyen_nganh = ?1 and hpk.thu_tu_hoc_ky = ?2", nativeQuery = true)
-    public List<HocPhanKhung> findAllByChuyenNganhAndHocKi(long maCN, int tthk);
+    List<HocPhanKhung> findAllByChuyenNganhAndHocKi(long maCN, int tthk);
 }

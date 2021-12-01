@@ -73,4 +73,9 @@ public class HocPhanServiceImpl implements HocPhanService {
             throw new RuntimeException("fail to store excel data: " + e.getMessage());
         }
     }
+
+    @Override
+    public List<HocPhan> findMonHocNotInHocPhan() {
+        return hocPhanRepository.findHocPhanNotInHPK();
+    }
 }
