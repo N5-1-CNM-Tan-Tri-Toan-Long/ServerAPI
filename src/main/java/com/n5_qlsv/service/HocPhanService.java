@@ -6,12 +6,24 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 public interface HocPhanService {
+
     HocPhan saveHocPhan(HocPhan hocPhan);
+
     HocPhan findHocPhanById(String maHP);
-    List<HocPhan> findAllHocPhan(int page, int size);
-    void deleteHocPhanById(String maHP);
+
     HocPhan updateHocPhanById(String maHP, HocPhan hocPhan);
-    List<HocPhan> findHPByMaHK(long maHK);
+
+    void deleteHocPhanById(String maHP);
+
     void saveHocPhanByFile(MultipartFile file);
+
+    List<HocPhan> findAllHocPhan(int page, int size);
+
+    List<HocPhan> findHPByMaHK(long maHK);
+
     List<HocPhan> findMonHocNotInHocPhan();
+
+    List<HocPhan> search(String keyword, int page, int size);
+
+    List<HocPhan> findAllByChuyenNganh(Long maCN, int page, int size);
 }

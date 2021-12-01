@@ -4,7 +4,6 @@ package com.n5_qlsv.service.Impl;
 import com.n5_qlsv.entity.HocPhan;
 import com.n5_qlsv.helper.ExcelHelperHocPhan;
 import com.n5_qlsv.repository.HocPhanRepository;
-import com.n5_qlsv.repository.MonHocRepository;
 import com.n5_qlsv.service.HocPhanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -33,14 +32,9 @@ public class HocPhanServiceImpl implements HocPhanService {
     }
 
     @Override
-    public List<HocPhan> findAllHocPhan(int page, int size) {
-        Pageable pageable;
-        if(page < 0 || size <= 0)
-            pageable = Pageable.unpaged();
-        else
-            pageable = PageRequest.of(page,size);
-
-        return hocPhanRepository.findAll(pageable).getContent();
+    public HocPhan updateHocPhanById(String maHP, HocPhan hocPhan) {
+        hocPhan.setMaHocPhan(maHP);
+        return hocPhanRepository.save(hocPhan);
     }
 
     @Override
@@ -54,17 +48,6 @@ public class HocPhanServiceImpl implements HocPhanService {
     }
 
     @Override
-    public HocPhan updateHocPhanById(String maHP, HocPhan hocPhan) {
-        hocPhan.setMaHocPhan(maHP);
-        return hocPhanRepository.save(hocPhan);
-    }
-
-    @Override
-    public List<HocPhan> findHPByMaHK(long maHK) {
-        return hocPhanRepository.findHPByMaHK(maHK);
-    }
-
-    @Override
     public void saveHocPhanByFile(MultipartFile file) {
         try {
             List<HocPhan> hocPhanList = ExcelHelperHocPhan.excelToTutorials(file.getInputStream());
@@ -75,7 +58,43 @@ public class HocPhanServiceImpl implements HocPhanService {
     }
 
     @Override
+    public List<HocPhan> findAllHocPhan(int page, int size) {
+        Pageable pageable;
+        if(page < 0 || size <= 0)
+            pageable = Pageable.unpaged();
+        else
+            pageable = PageRequest.of(page,size);
+
+        return hocPhanRepository.findAll(pageable).getContent();
+    }
+
+    @Override
+    public List<HocPhan> findHPByMaHK(long maHK) {
+        return hocPhanRepository.findHPByMaHK(maHK);
+    }
+
+    @Override
     public List<HocPhan> findMonHocNotInHocPhan() {
         return hocPhanRepository.findHocPhanNotInHPK();
+    }
+
+    @Override
+    public List<HocPhan> search(String keyword, int page, int size) {
+        Pageable pageable;
+        if(page < 0 || size <= 0)
+            pageable = Pageable.unpaged();
+        else
+            pageable = PageRequest.of(page, size);
+        return hocPhanRepository.search(keyword, pageable);
+    }
+
+    @Override
+    public List<HocPhan> findAllByChuyenNganh(Long maCN, int page, int size) {
+        Pageable pageable;
+        if(page < 0 || size <= 0)
+            pageable = Pageable.unpaged();
+        else
+            pageable = PageRequest.of(page, size);
+        return hocPhanRepository.findAllByChuyenNganh(maCN, pageable);
     }
 }

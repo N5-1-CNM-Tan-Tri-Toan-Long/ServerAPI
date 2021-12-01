@@ -57,4 +57,18 @@ public class HocPhanController {
     public List<HocPhan> findMonHocNotInHocPhan(){
         return hocPhanService.findMonHocNotInHocPhan();
     }
+
+    @GetMapping("/keyword={keyword}")
+    public List<HocPhan> searchAllByKeyword(@PathVariable(value = "keyword") String keyword
+            , @RequestParam(defaultValue = "0") int page
+            , @RequestParam(defaultValue = "0") int size) {
+        return hocPhanService.search(keyword, page, size);
+    }
+
+    @GetMapping("/chuyenNganh={maCN}")
+    public List<HocPhan> findAllByChuyenNganh(@PathVariable Long maCN,
+                                                 @RequestParam(defaultValue = "0") int page,
+                                                 @RequestParam(defaultValue = "0") int size) {
+        return hocPhanService.findAllByChuyenNganh(maCN, page, size);
+    }
 }
