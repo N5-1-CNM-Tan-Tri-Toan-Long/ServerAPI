@@ -13,4 +13,5 @@ public interface HocPhanService {
     HocPhan updateHocPhanById(String maHP, HocPhan hocPhan);
     List<HocPhan> findHPByMaHK(long maHK);
     void saveHocPhanByFile(MultipartFile file);
+    List<HocPhan> findMonHocNotInHocPhan();
 }

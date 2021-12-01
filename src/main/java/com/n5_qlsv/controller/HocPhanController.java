@@ -52,4 +52,9 @@ public class HocPhanController {
     public void  uploadFile(@RequestParam("file") MultipartFile file) {
                 hocPhanService.saveHocPhanByFile(file);
     }
+
+    @GetMapping("/notInHPK")
+    public List<HocPhan> findMonHocNotInHocPhan(){
+        return hocPhanService.findMonHocNotInHocPhan();
+    }
 }
