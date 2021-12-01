@@ -20,4 +20,8 @@ public interface KetQuaHocTapRepository extends JpaRepository<KetQuaHocTap, Long
     KetQuaHocTap findKQHTByMaSVAndMaLHP(String maSV, Long maLHP);
     @Query("select kq from KetQuaHocTap kq where kq.sinhVien.maSV = ?1")
     List<KetQuaHocTap> findKQHTByMaSVWithPageSize(String maSV, Pageable pageable);
+
+    @Query("select kq from KetQuaHocTap kq where kq.lopHocPhan.maLHP = ?1")
+    List<KetQuaHocTap> findKQHYByMaLHP(Long maLHP);
+
 }
