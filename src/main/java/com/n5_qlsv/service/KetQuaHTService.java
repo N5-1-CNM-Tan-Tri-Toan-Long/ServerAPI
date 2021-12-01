@@ -19,4 +19,5 @@ public interface KetQuaHTService {
     Set<Long> findMaHKByMaSV(String maSV);
     KetQuaHocTap findKQHTByMaSVAndMaLHP(String maSV, Long maLHP);
     void saveKetQuaHocTapByFile(MultipartFile file);
+    List<KetQuaHocTap> findKQHYByMaLHP(Long maLHP);
 }

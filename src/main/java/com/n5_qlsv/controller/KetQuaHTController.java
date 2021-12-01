@@ -66,4 +66,9 @@ public class KetQuaHTController {
     public void  uploadFile(@RequestParam("file") MultipartFile file) {
         ketQuaHTService.saveKetQuaHocTapByFile(file);
     }
+
+    @GetMapping("/{maLHP}/kq")
+    public List<KetQuaHocTap> findKQHYByMaLHP(@PathVariable("maLHP") Long maLHP){
+        return ketQuaHTService.findKQHYByMaLHP(maLHP);
+    }
 }

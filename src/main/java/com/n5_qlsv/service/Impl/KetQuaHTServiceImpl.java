@@ -260,4 +260,9 @@ public class KetQuaHTServiceImpl implements KetQuaHTService {
             throw new RuntimeException("fail to store excel data: " + e.getMessage());
         }
     }
+
+    @Override
+    public List<KetQuaHocTap> findKQHYByMaLHP(Long maLHP) {
+        return ketQuaHocTapRepository.findKQHYByMaLHP(maLHP);
+    }
 }
