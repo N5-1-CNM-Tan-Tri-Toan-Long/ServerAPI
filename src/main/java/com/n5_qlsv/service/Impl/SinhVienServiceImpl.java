@@ -42,6 +42,16 @@ public class SinhVienServiceImpl implements SinhVienService {
     }
 
     @Override
+    public void saveSinhVienByFile(MultipartFile file) {
+        try {
+            List<SinhVien> sinhVienList = ExcelHelperSinhVien.excelToTutorials(file.getInputStream());
+            sinhVienRepository.saveAll(sinhVienList);
+        } catch (IOException e) {
+            throw new RuntimeException("fail to store excel data: " + e.getMessage());
+        }
+    }
+
+    @Override
     public List<SinhVien> findAllSinhVien(int page, int size) {
         Pageable pageable;
         if(page < 0 || size <= 0)
@@ -49,11 +59,6 @@ public class SinhVienServiceImpl implements SinhVienService {
         else
             pageable = PageRequest.of(page, size);
         return sinhVienRepository.findAll(pageable).getContent();
-    }
-
-    @Override
-    public String findRoleNameByMaSV(String maSV) {
-        return sinhVienRepository.findRoleNameByMaSV(maSV);
     }
 
     @Override
@@ -77,12 +82,8 @@ public class SinhVienServiceImpl implements SinhVienService {
     }
 
     @Override
-    public void saveSinhVienByFile(MultipartFile file) {
-        try {
-            List<SinhVien> sinhVienList = ExcelHelperSinhVien.excelToTutorials(file.getInputStream());
-            sinhVienRepository.saveAll(sinhVienList);
-        } catch (IOException e) {
-            throw new RuntimeException("fail to store excel data: " + e.getMessage());
-        }
+    public String findRoleNameByMaSV(String maSV) {
+        return sinhVienRepository.findRoleNameByMaSV(maSV);
     }
+
 }
