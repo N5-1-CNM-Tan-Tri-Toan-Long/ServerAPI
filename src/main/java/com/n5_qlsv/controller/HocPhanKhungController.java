@@ -27,6 +27,11 @@ public class HocPhanKhungController {
         return service.findAllByChuyenNganhAndHocKi(maCN, tthk);
     }
 
+    @GetMapping("/chuyenNganh/{maCN}")
+    public List<HocPhanKhung> findAllByChuyenNganh(@PathVariable long maCN){
+        return service.findAllByChuyenNganh(maCN);
+    }
+
     @GetMapping("/{id}")
     public HocPhanKhung getById(@PathVariable("id") Long id) {
         return service.findHPKById(id);
